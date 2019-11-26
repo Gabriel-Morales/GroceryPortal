@@ -1,0 +1,98 @@
+{
+  "project_info": {
+    "project_number": "226416292917",
+    "firebase_url": "https://quick-cart-4c31e.firebaseio.com",
+    "project_id": "quick-cart-4c31e",
+    "storage_bucket": "quick-cart-4c31e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:226416292917:android:490e0921fdc602ddfc2d7c",
+        "android_client_info": {
+          "package_name": "com.example.mikaela.grocerydelivery"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "226416292917-2qlgsvqjd4gpm5p11edgqarcmiv7srjn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtUYhmleEtZ4B2kPKZPI6eUCbUPjjVdbk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "226416292917-2qlgsvqjd4gpm5p11edgqarcmiv7srjn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:226416292917:android:8a5d8d0c8c533cdcfc2d7c",
+        "android_client_info": {
+          "package_name": "com.kwikkart.kwikcart"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "226416292917-2qlgsvqjd4gpm5p11edgqarcmiv7srjn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtUYhmleEtZ4B2kPKZPI6eUCbUPjjVdbk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "226416292917-2qlgsvqjd4gpm5p11edgqarcmiv7srjn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:226416292917:android:e22eb5d8932d5591fc2d7c",
+        "android_client_info": {
+          "package_name": "com.kwikkart.kwikkart"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "226416292917-2qlgsvqjd4gpm5p11edgqarcmiv7srjn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtUYhmleEtZ4B2kPKZPI6eUCbUPjjVdbk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "226416292917-2qlgsvqjd4gpm5p11edgqarcmiv7srjn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
