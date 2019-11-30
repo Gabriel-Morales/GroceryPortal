@@ -41,6 +41,8 @@ public class SignInActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
+
+
     }
 
     public void validateUser(View view)
@@ -51,10 +53,11 @@ public class SignInActivity extends AppCompatActivity {
 
         if (password.equals("")|| username.equals(""))
         {
-            Toast.makeText(SignInActivity.this, "Please enter valid credentials.",
+            Toast.makeText(SignInActivity.this, "Fields cannot be empty.",
                     Toast.LENGTH_SHORT).show();
             return;
         }
+
 
         mAuth.signInWithEmailAndPassword(username, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
@@ -62,11 +65,12 @@ public class SignInActivity extends AppCompatActivity {
 
                 if (task.isSuccessful())
                 {
+
                     startActivity(intent);
                 }
                 else
                 {
-                    Toast.makeText(SignInActivity.this, "Authentication failed.",
+                    Toast.makeText(SignInActivity.this, "Invalid email or password.",
                             Toast.LENGTH_SHORT).show();
                 }
 
