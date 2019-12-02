@@ -35,7 +35,6 @@ public class SignInActivity extends AppCompatActivity {
 
         view.setBackgroundColor(Color.WHITE);
         mAuth = FirebaseAuth.getInstance();
-
         intent = new Intent(this, Home.class);
         if (mAuth.getCurrentUser() != null) {
             startActivity(intent);

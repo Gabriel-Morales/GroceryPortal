@@ -6,6 +6,15 @@
     <string name="password">Password</string>
     <string name="title_activity_home">Home</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_cart">Cart</string>
+    <string name="title_track">Track</string>
+    <string name="logout">Logout</string>
+    <string name="all">All</string>
+    <string name="meat">Meat</string>
+    <string name="dairy">Dairy</string>
+    <string name="produce">Produce</string>
+    <string name="Drinks">Drinks</string>
+    <string name="dessert">Dessert</string>
+    <string name="other">Other</string>
+    <string name="signed_in_placeholder">SIGNED IN! Placeholder</string>
 </resources>
