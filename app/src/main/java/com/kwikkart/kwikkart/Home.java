@@ -3,46 +3,85 @@ package com.kwikkart.kwikkart;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-public class Home extends AppCompatActivity {
+public class Home extends AppCompatActivity  implements BottomNavigationView.OnNavigationItemSelectedListener {
 
-    private Toolbar homeToolbar;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         getWindow().setStatusBarColor(Color.WHITE);
-        homeToolbar = findViewById(R.id.home_toolbar);
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        setSupportActionBar(homeToolbar);
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(R.id.navigation_home, R.id.navigation_cart, R.id.navigation_track).build();
+
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        NavigationUI .setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
+        navView.setOnNavigationItemSelectedListener(this);
+
+    }
+
+
+    /* Note: Some of the below code has been adapted from Belal Khan - "Bottom navigation android example using fragments" */
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+
+        Fragment destFragment;
+
+        switch (menuItem.getItemId())
+        {
+            case R.id.cart:
+                destFragment = new CartFragment();
+                createFragment(destFragment);
+                return true;
+            case R.id.track:
+                destFragment = new TrackFragment();
+                createFragment(destFragment);
+                return true;
+            case R.id.account:
+                destFragment = new AccountFragment();
+                createFragment(destFragment);
+                return true;
+            case R.id.settings:
+                destFragment = new SettingsFragment();
+                createFragment(destFragment);
+                return true;
+            case R.id.home:
+                destFragment = new HomeFragment();
+                createFragment(destFragment);
+                return true;
+        }
+
+        return false;
     }
 
 
-    public void logoutButtonClicked(View view) {
-        FirebaseAuth.getInstance().signOut();
-        Intent intent = new Intent(this, MainActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
+    private void createFragment(Fragment fragment)
+    {
+
+        if (fragment == null)
+        {
+            return;
+        }
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, fragment).commit();
 
     }
+
 }
