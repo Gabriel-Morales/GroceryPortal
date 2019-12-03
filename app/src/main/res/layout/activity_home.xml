@@ -12,8 +12,11 @@
         android:layout_width="match_parent">
 
         <androidx.appcompat.widget.Toolbar
-            android:layout_width="398dp"
+            android:id="@+id/home_toolbar"
+            android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
+            android:background="#FFFFFF"
+            android:backgroundTint="#FFFFFF"
             android:clickable="false"
             app:layout_scrollFlags="scroll|enterAlways">
 
@@ -24,12 +27,13 @@
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_scrollFlags="scroll|enterAlways"
 
-            app:tabIndicatorColor="#FFFFFF"
+            android:background="#FFFFFF"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:tabIndicatorColor="@color/colorPrimaryDark"
             app:tabMode="scrollable"
-            app:tabRippleColor="#19FFFFFF"
-            app:tabSelectedTextColor="#FFFFFF">
+            app:tabRippleColor="#198D8D8D"
+            app:tabSelectedTextColor="@color/colorPrimaryDark">
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
@@ -99,6 +103,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="?android:attr/windowBackground"
+            android:elevation="8dp"
+            app:itemTextColor="@color/colorPrimaryDark"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
