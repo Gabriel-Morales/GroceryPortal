@@ -18,4 +18,35 @@ public class Item {
         this.isOnSale = isOnSale;
     }
 
+
+    public String getName()
+    {
+        return name;
+    }
+
+    public String getPrice()
+    {
+        return price;
+    }
+
+    public boolean isOnSale()
+    {
+        return isOnSale;
+    }
+
+    public void setName(String name)
+    {
+            this.name = name;
+    }
+
+    public void setPrice(String price)
+    {
+            this.price = price;
+    }
+
+    public void setIsOnSale(boolean isOnSale)
+    {
+        this.isOnSale = isOnSale;
+    }
+
 }

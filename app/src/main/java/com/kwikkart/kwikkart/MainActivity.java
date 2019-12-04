@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
-       getWindow().setStatusBarColor(Color.rgb(100 , 193, 255));
+       getWindow().setStatusBarColor(Color.WHITE);
 
        lButton = findViewById(R.id.loginButton);
        loginView = findViewById(R.id.loginView);
