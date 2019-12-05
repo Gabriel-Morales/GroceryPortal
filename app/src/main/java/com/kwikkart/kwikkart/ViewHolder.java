@@ -15,11 +15,13 @@ public class ViewHolder extends RecyclerView.ViewHolder {
     private ImageView image;
     private TextView name;
     private TextView price;
-    private TextView onSale;
 
     public ViewHolder(View view)
     {
         super(view);
+        image = view.findViewById(R.id.itemImage);
+        name = view.findViewById(R.id.itemName);
+        price = view.findViewById(R.id.itemPrice);
     }
 
 

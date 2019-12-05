@@ -37,6 +37,7 @@ public class SettingsFragment extends Fragment  {
 
                 FirebaseAuth.getInstance().signOut();
                 Intent intent = new Intent(getActivity(), MainActivity.class);
+                getFragmentManager().popBackStack();
                 logoutButton = null;
                 startActivity(intent);
             }

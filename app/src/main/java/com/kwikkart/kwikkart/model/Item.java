@@ -4,7 +4,6 @@ public class Item {
 
     private String name;
     private String price;
-    private boolean isOnSale;
 
     public Item()
     {
@@ -15,7 +14,7 @@ public class Item {
     {
         this.name = name;
         this.price = price;
-        this.isOnSale = isOnSale;
+
     }
 
 
@@ -29,11 +28,6 @@ public class Item {
         return price;
     }
 
-    public boolean isOnSale()
-    {
-        return isOnSale;
-    }
-
     public void setName(String name)
     {
             this.name = name;
@@ -44,9 +38,5 @@ public class Item {
             this.price = price;
     }
 
-    public void setIsOnSale(boolean isOnSale)
-    {
-        this.isOnSale = isOnSale;
-    }
 
 }
