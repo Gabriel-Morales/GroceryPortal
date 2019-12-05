@@ -1,5 +1,6 @@
 package com.kwikkart.kwikkart;
 
+import android.net.Uri;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -22,6 +23,13 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         image = view.findViewById(R.id.itemImage);
         name = view.findViewById(R.id.itemName);
         price = view.findViewById(R.id.itemPrice);
+    }
+
+    public void initializeView(String name, String price, String imagePath)
+    {
+        this.name.setText(name);
+        this.price.setText(price);
+        //this.image.setImageURI(Uri.parse(""));
     }
 
 

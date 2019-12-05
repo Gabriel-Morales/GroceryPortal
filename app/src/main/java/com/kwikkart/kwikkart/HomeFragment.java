@@ -1,6 +1,7 @@
 package com.kwikkart.kwikkart;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,6 +37,8 @@ public class HomeFragment extends Fragment {
         mAdapter = new FirebaseRecyclerAdapter<Item, ViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull Item model) {
+
+                holder.initializeView(model.getName(),model.getPrice(), model.getImage());
 
             }
 

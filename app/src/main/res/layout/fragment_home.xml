@@ -30,7 +30,6 @@
             android:layout_height="wrap_content"
 
             android:background="#FFFFFF"
-            app:layout_scrollFlags="scroll|enterAlways"
             app:tabIndicatorColor="@color/colorPrimaryDark"
             app:tabMode="scrollable"
             app:tabRippleColor="#198D8D8D"
@@ -81,6 +80,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipChildren="false"
-        android:clipToPadding="false" />
+        android:clipToPadding="false"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
