@@ -1,10 +1,12 @@
 package com.kwikkart.kwikkart;
 
+
 import android.os.Bundle;
-import android.util.Log;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -22,16 +24,22 @@ public class HomeFragment extends Fragment {
 
     private RecyclerView recycleView;
     private View view;
+
     private FirebaseRecyclerAdapter<Item, ViewHolder> mAdapter;
     private FirebaseRecyclerOptions<Item> options;
     private Query query;
 
+
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+
 
         view = inflater.inflate(R.layout.fragment_home, container, false);
 
         recycleView = view.findViewById(R.id.storelist);
         query = FirebaseDatabase.getInstance().getReference().child("all_items");
+
+
         options = new FirebaseRecyclerOptions.Builder<Item>().setQuery(query, Item.class).build();
 
         mAdapter = new FirebaseRecyclerAdapter<Item, ViewHolder>(options) {
