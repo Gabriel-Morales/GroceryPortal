@@ -32,6 +32,7 @@ public class Home extends AppCompatActivity  implements BottomNavigationView.OnN
         NavigationUI.setupWithNavController(navView, navController);
         navView.setOnNavigationItemSelectedListener(this);
 
+
     }
 
 

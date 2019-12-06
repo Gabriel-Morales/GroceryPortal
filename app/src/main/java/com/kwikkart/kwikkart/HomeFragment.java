@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.NotificationCompat;
 import androidx.fragment.app.Fragment;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -32,14 +34,13 @@ public class HomeFragment extends Fragment {
     private View view;
     private TabLayout tabs;
 
-
     private FirebaseRecyclerAdapter<Item, ViewHolder> mAdapter;
     private FirebaseRecyclerOptions<Item> options;
     private Query query;
     private String queryString;
     private int position;
     private int scrollPos;
-    private ArrayList<Item> itemsInCart;
+    private static ArrayList<Item> itemsInCart  = new ArrayList<>();
 
     public HomeFragment()
     {
@@ -65,8 +66,6 @@ public class HomeFragment extends Fragment {
         recycleView = view.findViewById(R.id.storelist);
         tabs = view.findViewById(R.id.tabs);
 
-        itemsInCart = new ArrayList<>();
-
         tabs.setVisibility(View.INVISIBLE);
         initializeTabs();
         initializePrimaryRecycler();
@@ -86,6 +85,7 @@ public class HomeFragment extends Fragment {
         super.onStop();
         mAdapter.stopListening();
     }
+
 
     private void initializePrimaryRecycler()
     {
@@ -110,7 +110,7 @@ public class HomeFragment extends Fragment {
             @Override
             protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull Item model) {
 
-                holder.initializeView(model.getName(), model.getPrice(), model.getImage());
+                holder.initializeView(model.getName(), model.getPrice(), model.getImage(), model);
 
             }
 
@@ -210,6 +210,30 @@ public class HomeFragment extends Fragment {
 
         getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, destFragment).commit();
 
+    }
+
+    public static void addItemToCart(Item item)
+    {
+        itemsInCart.add(item);
+    }
+
+    public static ArrayList<Item> getCart()
+    {
+        return itemsInCart;
+    }
+
+    public static void clearCart()
+    {
+        if (itemsInCart.isEmpty())
+        {
+            return;
+        }
+
+        int i;
+        for (i = 0; i < itemsInCart.size(); i++)
+        {
+            itemsInCart.remove(i);
+        }
     }
 
 }
