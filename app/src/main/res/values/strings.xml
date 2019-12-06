@@ -11,11 +11,15 @@
     <string name="logout">Logout</string>
     <string name="all">All</string>
     <string name="meat">Meat</string>
-    <string name="dairy">Dairy</string>
+    <string name="dairy">Eggs &amp; Dairy</string>
     <string name="produce">Produce</string>
     <string name="Drinks">Drinks</string>
     <string name="dessert">Dessert</string>
     <string name="other">Other</string>
     <string name="signed_in_placeholder">SIGNED IN! Placeholder</string>
+    <string name="add_to_cart">Add to cart</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
