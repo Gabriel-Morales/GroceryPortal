@@ -1,5 +1,6 @@
 package com.kwikkart.kwikkart;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -30,6 +31,8 @@ public class RegistrationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
+
+        getWindow().setStatusBarColor(Color.WHITE);
 
         signupInputEmail = findViewById(R.id.email);
         signupInputPassword = findViewById(R.id.password);

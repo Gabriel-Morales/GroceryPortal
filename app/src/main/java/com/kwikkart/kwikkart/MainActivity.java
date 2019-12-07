@@ -28,15 +28,12 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
-       getWindow().setStatusBarColor(Color.WHITE);
-
        lButton = findViewById(R.id.loginButton);
        signUpButton = findViewById(R.id.button);
        loginView = findViewById(R.id.loginView);
        loginView.setBackgroundColor(Color.WHITE);
 
     }
-
 
     public void loginButtonClicked(View view) {
 

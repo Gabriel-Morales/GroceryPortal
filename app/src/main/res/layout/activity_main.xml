@@ -45,7 +45,7 @@
     <Button
         android:id="@+id/button"
         android:layout_width="155dp"
-        android:layout_height="45dp"
+        android:layout_height="48dp"
         android:background="@drawable/sign_up_button"
         android:onClick="registerButtonClicked"
         app:layout_constraintBottom_toBottomOf="parent"

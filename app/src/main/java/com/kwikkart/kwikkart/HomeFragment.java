@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 
 import androidx.annotation.NonNull;
@@ -33,6 +34,7 @@ public class HomeFragment extends Fragment {
     private RecyclerView recycleView;
     private View view;
     private TabLayout tabs;
+    private ProgressBar progressBar;
 
     private FirebaseRecyclerAdapter<Item, ViewHolder> mAdapter;
     private FirebaseRecyclerOptions<Item> options;
@@ -65,7 +67,8 @@ public class HomeFragment extends Fragment {
 
         recycleView = view.findViewById(R.id.storelist);
         tabs = view.findViewById(R.id.tabs);
-
+        progressBar = getActivity().findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.VISIBLE);
         tabs.setVisibility(View.INVISIBLE);
         initializeTabs();
         initializePrimaryRecycler();
@@ -119,7 +122,7 @@ public class HomeFragment extends Fragment {
             public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
                 View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.store_list_item, parent, false);
-
+                progressBar.setVisibility(View.GONE);
                 return new ViewHolder(view);
             }
 
