@@ -56,12 +56,12 @@ public class RegistrationActivity extends AppCompatActivity {
         String email = signupInputEmail.getText().toString();
         String password = signupInputPassword.getText().toString();
         String name = signupInputName.getText().toString();
-        String phonenumber = signupInputPhoneNumber.getText().toString();
+        String phoneNumber = signupInputPhoneNumber.getText().toString();
         String city = signupInputCity.getText().toString();
         String street = signupInputStreet.getText().toString();
         String zipcode = signupInputZipCode.getText().toString();
         String preference = signupInputPreferences.getText().toString();
-        User user = new User(email, name, street + " " + city + " " + zipcode);
+        User user = new User(email, name, street + " " + city + " " + zipcode, phoneNumber, preference);
 
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
