@@ -13,6 +13,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class MainActivity extends AppCompatActivity {
 
     private Button lButton;
+    private Button signUpButton;
     private View loginView;
     private FirebaseAuth mAuth;
 
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
        getWindow().setStatusBarColor(Color.WHITE);
 
        lButton = findViewById(R.id.loginButton);
+       signUpButton = findViewById(R.id.button);
        loginView = findViewById(R.id.loginView);
        loginView.setBackgroundColor(Color.WHITE);
 
@@ -42,5 +44,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void registerButtonClicked(View view){
+
+        Intent intent = new Intent(this, RegistrationActivity.class);
+        startActivity(intent);
+    }
 
 }
