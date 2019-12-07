@@ -217,7 +217,9 @@ public class HomeFragment extends Fragment {
 
     public static void addItemToCart(Item item)
     {
-        itemsInCart.add(item);
+        //Provides a "deep" copy of the item. A less efficient version, but it's a small object.
+        Item copyItem = new Item(item.getName(), item.getPrice(), item.getImage());
+        itemsInCart.add(copyItem);
     }
 
     public static ArrayList<Item> getCart()

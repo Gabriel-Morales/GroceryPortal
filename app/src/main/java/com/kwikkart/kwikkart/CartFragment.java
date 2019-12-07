@@ -17,6 +17,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.kwikkart.kwikkart.R;
@@ -26,12 +28,14 @@ public class CartFragment extends Fragment {
     private Toolbar cartToolbar;
     private FloatingActionButton floatingActionButton;
     private View view;
+    private RecyclerView recyclerView;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         view = inflater.inflate(R.layout.fragment_cart, container, false);
         cartToolbar = view.findViewById(R.id.cartToolbar);
         floatingActionButton = view.findViewById(R.id.fabCheck);
+        recyclerView = view.findViewById(R.id.cartRecycler);
 
         if (HomeFragment.getCart().size() == 0)
         {
@@ -59,6 +63,12 @@ public class CartFragment extends Fragment {
         });
 
         cartToolbar.setTitle(HomeFragment.getCart().size() + " items in cart");
+
+        CartAdapter cartAdapter = new CartAdapter(getContext());
+        recyclerView.setAdapter(cartAdapter);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        layoutManager.setReverseLayout(false);
+        recyclerView.setLayoutManager(layoutManager);
 
          return view;
     }

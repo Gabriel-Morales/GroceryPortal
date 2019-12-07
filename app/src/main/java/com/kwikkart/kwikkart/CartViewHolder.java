@@ -16,32 +16,32 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.kwikkart.kwikkart.model.Item;
 
-/**
- *  This class is intended to represent the items that will be held within the recycler view.
- */
-
-public class ViewHolder extends RecyclerView.ViewHolder {
+public class CartViewHolder extends RecyclerView.ViewHolder {
 
     private ImageView image;
     private TextView name;
     private TextView price;
-    private Button addToCart;
+    private Button removeFromCart;
     private Item item;
 
-    public ViewHolder(View view)
-    {
-        super(view);
-        image = view.findViewById(R.id.itemImage);
-        name = view.findViewById(R.id.itemName);
-        price = view.findViewById(R.id.itemPrice);
-        addToCart = view.findViewById(R.id.addToCart);
+
+    public CartViewHolder(@NonNull View itemView) {
+        super(itemView);
+        image = itemView.findViewById(R.id.cartImage);
+        name = itemView.findViewById(R.id.cartItemName);
+        price = itemView.findViewById(R.id.cartItemPrice);
+        removeFromCart = itemView.findViewById(R.id.removeItem);
     }
 
     public void initializeView(String name, String price, String imagePath, Item item)
     {
         this.name.setText(name);
         this.price.setText(price);
+        this.item = item;
 
+
+
+        //TODO: Attach action handler to the button here to remove from the ArrayList and update the recycler.
         StorageReference storageReference = FirebaseStorage.getInstance().getReferenceFromUrl(imagePath);
 
         storageReference.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>()  {
@@ -51,26 +51,14 @@ public class ViewHolder extends RecyclerView.ViewHolder {
 
                 if (task.isSuccessful())
                 {
-                     Glide.with(image.getContext()).load(task.getResult().toString()).into(image);
+                    Glide.with(image.getContext()).load(task.getResult().toString()).into(image);
                 }
 
             }
 
         });
 
-        if (this.item == null) {
-            this.item = item;
-        }
-
-        addToCart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                HomeFragment.addItemToCart(getItem());
-            }
-        });
-
     }
-
 
     public void setItem(Item item)
     {
@@ -86,4 +74,6 @@ public class ViewHolder extends RecyclerView.ViewHolder {
     {
         return name.getText().toString();
     }
+
+
 }
