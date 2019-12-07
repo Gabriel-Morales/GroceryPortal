@@ -37,6 +37,14 @@ public class CartFragment extends Fragment {
         floatingActionButton = view.findViewById(R.id.fabCheck);
         recyclerView = view.findViewById(R.id.cartRecycler);
 
+
+        final CartAdapter cartAdapter = new CartAdapter(getContext(), cartToolbar);
+        recyclerView.setAdapter(cartAdapter);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        layoutManager.setReverseLayout(false);
+        recyclerView.setLayoutManager(layoutManager);
+
+
         if (HomeFragment.getCart().size() == 0)
         {
             cartToolbar.getMenu().getItem(0).setEnabled(false);
@@ -52,23 +60,19 @@ public class CartFragment extends Fragment {
                         .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
                             public void onClick(DialogInterface dialog, int whichButton) {
+                                int range = HomeFragment.getCart().size();
                                 HomeFragment.clearCart();
+                                cartAdapter.notifyItemRangeRemoved(0, range);
                                 cartToolbar.setTitle("0 items in cart");
                                 cartToolbar.getMenu().getItem(0).setEnabled(false);
                             }})
                         .setNegativeButton(android.R.string.no, null).show();
-
                 return true;
             }
         });
 
         cartToolbar.setTitle(HomeFragment.getCart().size() + " items in cart");
 
-        CartAdapter cartAdapter = new CartAdapter(getContext());
-        recyclerView.setAdapter(cartAdapter);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-        layoutManager.setReverseLayout(false);
-        recyclerView.setLayoutManager(layoutManager);
 
          return view;
     }

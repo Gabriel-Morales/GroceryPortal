@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
+import androidx.appcompat.widget.Toolbar;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -23,7 +23,8 @@ public class CartViewHolder extends RecyclerView.ViewHolder {
     private TextView price;
     private Button removeFromCart;
     private Item item;
-
+    private CartAdapter cartAdapter;
+    private Toolbar parentToolbar;
 
     public CartViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -58,6 +59,28 @@ public class CartViewHolder extends RecyclerView.ViewHolder {
 
         });
 
+        removeFromCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                int pos = HomeFragment.getCart().indexOf(getItem());
+                HomeFragment.getCart().remove(getItem());
+                cartAdapter.notifyItemRemoved(pos);
+                parentToolbar.setTitle(HomeFragment.getCart().size() + " items in cart");
+            }
+
+        });
+
+    }
+
+    public void setParentToolbar(Toolbar parentToolbar)
+    {
+        this.parentToolbar = parentToolbar;
+    }
+
+    public void setParentAdapter(CartAdapter cartAdapter)
+    {
+        this.cartAdapter = cartAdapter;
     }
 
     public void setItem(Item item)

@@ -58,9 +58,9 @@ public class ViewHolder extends RecyclerView.ViewHolder {
 
         });
 
-        if (this.item == null) {
-            this.item = item;
-        }
+
+        this.item = item;
+
 
         addToCart.setOnClickListener(new View.OnClickListener() {
             @Override
