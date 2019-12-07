@@ -1,10 +1,15 @@
 package com.kwikkart.kwikkart;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
@@ -13,17 +18,45 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.kwikkart.kwikkart.R;
 
 public class CartFragment extends Fragment {
 
     private Toolbar cartToolbar;
+    private FloatingActionButton floatingActionButton;
     private View view;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         view = inflater.inflate(R.layout.fragment_cart, container, false);
         cartToolbar = view.findViewById(R.id.cartToolbar);
+        floatingActionButton = view.findViewById(R.id.fabCheck);
+
+        if (HomeFragment.getCart().size() == 0)
+        {
+            cartToolbar.getMenu().getItem(0).setEnabled(false);
+        }
+
+        cartToolbar.getMenu().getItem(0).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+
+                new AlertDialog.Builder(getContext())
+                        .setTitle("Clear shopping cart")
+                        .setMessage("Are you sure you would like to clear your shopping cart?")
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface dialog, int whichButton) {
+                                HomeFragment.clearCart();
+                                cartToolbar.setTitle("0 items in cart");
+                                cartToolbar.getMenu().getItem(0).setEnabled(false);
+                            }})
+                        .setNegativeButton(android.R.string.no, null).show();
+
+                return true;
+            }
+        });
 
         cartToolbar.setTitle(HomeFragment.getCart().size() + " items in cart");
 

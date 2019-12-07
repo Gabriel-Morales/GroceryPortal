@@ -22,7 +22,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#FFFFFF"
-            app:layout_scrollFlags="scroll|enterAlways"></androidx.appcompat.widget.Toolbar>
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:menu="@menu/checkout_menu" />
+
+
+
 
     </com.google.android.material.appbar.AppBarLayout>
 

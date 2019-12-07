@@ -224,16 +224,13 @@ public class HomeFragment extends Fragment {
 
     public static void clearCart()
     {
-        if (itemsInCart.isEmpty())
+        if (itemsInCart == null)
         {
             return;
         }
 
-        int i;
-        for (i = 0; i < itemsInCart.size(); i++)
-        {
-            itemsInCart.remove(i);
-        }
+        itemsInCart = null;
+        itemsInCart = new ArrayList<>();
     }
 
 }
