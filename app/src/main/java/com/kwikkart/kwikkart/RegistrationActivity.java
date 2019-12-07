@@ -1,18 +1,12 @@
 package com.kwikkart.kwikkart;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 import com.kwikkart.kwikkart.model.User;
 
 import androidx.annotation.NonNull;
@@ -52,6 +46,15 @@ public class RegistrationActivity extends AppCompatActivity {
         btnSignUp = findViewById(R.id.registerButton);
     }
 
+
+    /**
+     * This method takes the registration form input to create a new user account
+     * upon success, user is signed in automatically
+     *
+     * @param view
+     *
+     * @return void
+     */
     public void createNewUser(View view){
         String email = signupInputEmail.getText().toString();
         String password = signupInputPassword.getText().toString();
@@ -63,6 +66,7 @@ public class RegistrationActivity extends AppCompatActivity {
         String preference = signupInputPreferences.getText().toString();
         User user = new User(email, name, street + " " + city + " " + zipcode, phoneNumber, preference);
 
+        //This adds user the the authentication database
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -72,8 +76,7 @@ public class RegistrationActivity extends AppCompatActivity {
             }
         });
 
-        //This adds the metadata for new user
-        //Need to change user to add my info for account i.e. preference, phone number
+        //This adds the metadata for new user into the user firestore collection
         fDatabase.collection("users").document(email).set(user.toMap());
     }
 
