@@ -1,21 +1,18 @@
 package com.kwikkart.kwikkart;
 
 
-import android.graphics.Color;
 import android.os.Bundle;
 
-import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ProgressBar;
+import android.widget.SearchView;
 
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.core.app.NotificationCompat;
 import androidx.fragment.app.Fragment;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -36,13 +33,15 @@ public class HomeFragment extends Fragment {
     private View view;
     private TabLayout tabs;
     private ProgressBar progressBar;
+    private SearchView searchView;
+
 
     private FirebaseRecyclerAdapter<Item, ViewHolder> mAdapter;
     private FirebaseRecyclerOptions<Item> options;
     private Query query;
     private String queryString;
-    private int position;
-    private int scrollPos;
+    private String searchText;
+    private boolean searchStarted;
     private static ArrayList<Item> itemsInCart  = new ArrayList<>();
 
     public HomeFragment()
@@ -51,16 +50,6 @@ public class HomeFragment extends Fragment {
         this.queryString = "all_items";
     }
 
-
-    public HomeFragment(String queryString, int position, int scrollPos)
-    {
-        this.queryString = queryString;
-        this.position = position;
-        this.scrollPos = scrollPos;
-    }
-
-
-
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
 
@@ -68,10 +57,24 @@ public class HomeFragment extends Fragment {
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
         recycleView = view.findViewById(R.id.storelist);
         tabs = view.findViewById(R.id.tabs);
+        searchView = view.findViewById(R.id.search);
         progressBar = getActivity().findViewById(R.id.progressBar);
         progressBar.setVisibility(View.VISIBLE);
-        tabs.setVisibility(View.INVISIBLE);
+        searchText = "";
 
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+
+
+                return false;
+            }
+        });
 
         return view;
     }
@@ -141,21 +144,6 @@ public class HomeFragment extends Fragment {
 
     private void initializeTabs()
     {
-
-
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-
-                tabs.setScrollX(scrollPos);
-                tabs.setVisibility(View.VISIBLE);
-
-            }
-        }, 0);
-
-
-        TabLayout.Tab selectedTab = tabs.getTabAt(position);
-        selectedTab.select();
 
         tabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
