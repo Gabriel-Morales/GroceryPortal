@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FAFAFA"
-    android:backgroundTint="#FAFAFA">
+    android:backgroundTint="#FAFAFA"
+    >
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
@@ -23,7 +24,18 @@
             app:layout_scrollFlags="scroll|enterAlways">
 
 
+            <EditText
+                android:id="@+id/editText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#00FFFFFF"
+                android:ems="10"
+                android:hint="Search Kiwk Kart"
+                android:inputType="textPersonName"
+                />
+
         </androidx.appcompat.widget.Toolbar>
+
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"

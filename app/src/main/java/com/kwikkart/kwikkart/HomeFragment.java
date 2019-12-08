@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ProgressBar;
 
 
@@ -64,14 +65,13 @@ public class HomeFragment extends Fragment {
 
 
         view = inflater.inflate(R.layout.fragment_home, container, false);
-
+        getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
         recycleView = view.findViewById(R.id.storelist);
         tabs = view.findViewById(R.id.tabs);
         progressBar = getActivity().findViewById(R.id.progressBar);
         progressBar.setVisibility(View.VISIBLE);
         tabs.setVisibility(View.INVISIBLE);
-        initializeTabs();
-        initializePrimaryRecycler();
+
 
         return view;
     }
@@ -80,6 +80,8 @@ public class HomeFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+        initializeTabs();
+        initializePrimaryRecycler();
         mAdapter.startListening();
     }
 
@@ -126,6 +128,11 @@ public class HomeFragment extends Fragment {
                 return new ViewHolder(view);
             }
 
+            @Override
+            public void updateOptions(@NonNull FirebaseRecyclerOptions<Item> options) {
+                super.updateOptions(options);
+
+            }
         };
 
         return mAdapter;
@@ -154,38 +161,37 @@ public class HomeFragment extends Fragment {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
 
-                mAdapter.stopListening();
                 int position = tab.getPosition();
-                Fragment destFragment = null;
 
                 switch (position)
                 {
                     case 0:
-                        destFragment = new HomeFragment("all_items", position, tabs.getScrollX());
+                        updateQuery("all_items");
                         break;
                     case 1:
-                        destFragment = new HomeFragment("Meat", position, tabs.getScrollX());
+                        updateQuery("Meat");
                         break;
                     case 2:
-                        destFragment = new HomeFragment("Eggs_Dairy", position, tabs.getScrollX());
+                        updateQuery("Eggs_Dairy");
                         break;
                     case 3:
-                        destFragment = new HomeFragment("Produce", position, tabs.getScrollX());
+                        updateQuery("Produce");
                         break;
                     case 4:
-                        destFragment = new HomeFragment("Drinks", position, tabs.getScrollX());
+                       updateQuery("Drinks");
                         break;
                     case 5:
-                        destFragment = new HomeFragment("Dessert", position, tabs.getScrollX());
+                        updateQuery("Dessert");
                         break;
                     case 6:
-                        destFragment = new HomeFragment("Other", position, tabs.getScrollX());
+                        updateQuery("Other");
                         break;
                     default:
                         break;
                 }
 
-                createFragment(destFragment);
+                options = new FirebaseRecyclerOptions.Builder<Item>().setQuery(query, Item.class).build();
+                mAdapter.updateOptions(options);
 
             }
 
@@ -236,6 +242,12 @@ public class HomeFragment extends Fragment {
 
         itemsInCart = null;
         itemsInCart = new ArrayList<>();
+    }
+
+    public void updateQuery(String queryString)
+    {
+        this.queryString = queryString;
+        query = FirebaseDatabase.getInstance().getReference().child(queryString);
     }
 
 }

@@ -2,28 +2,27 @@ package com.kwikkart.kwikkart;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.kwikkart.kwikkart.R;
+
 
 public class CartFragment extends Fragment {
+
 
     private Toolbar cartToolbar;
     private FloatingActionButton floatingActionButton;
@@ -50,6 +49,22 @@ public class CartFragment extends Fragment {
             cartToolbar.getMenu().getItem(0).setEnabled(false);
         }
 
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (HomeFragment.getCart().isEmpty())
+                {
+                    return;
+                }
+                else
+                {
+                    //Bring up checkout view.
+                    Log.d("MY_TAG2", "Checkout button pressed");
+                }
+            }
+        });
+
+
         cartToolbar.getMenu().getItem(0).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
@@ -65,6 +80,7 @@ public class CartFragment extends Fragment {
                                 cartAdapter.notifyItemRangeRemoved(0, range);
                                 cartToolbar.setTitle("0 items in cart");
                                 cartToolbar.getMenu().getItem(0).setEnabled(false);
+
                             }})
                         .setNegativeButton(android.R.string.no, null).show();
                 return true;
