@@ -9,8 +9,8 @@ public class CreditCard {
     private String expirationDate;
     private String billingAddress;
 
-    public CreditCard{
-
+    public CreditCard(){
+        //data snapshot
     }
 
     public CreditCard(int cardNumber, int cvv, String expirationDate, String billingAddress){
