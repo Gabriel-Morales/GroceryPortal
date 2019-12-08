@@ -1,6 +1,8 @@
 package com.kwikkart.kwikkart.model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class User {
@@ -10,6 +12,7 @@ public class User {
     private String billingAddress;
     private String preference;
     private String phoneNumber;
+    private List<Order> orderHistory;
 
 
     public User()
@@ -24,8 +27,12 @@ public class User {
         this.billingAddress = billingAddress;
         this.phoneNumber = phoneNumber;
         this.preference = preference;
+        this.orderHistory = new ArrayList<>();
     }
 
+    public List<Order> getOrderHistory() {
+        return orderHistory;
+    }
 
     public Map<String, Object> toMap(){
         Map<String, Object> userValues = new HashMap<>();
@@ -34,6 +41,7 @@ public class User {
         userValues.put("billingAddress", this.billingAddress);
         userValues.put("phoneNumber", this.phoneNumber);
         userValues.put("preference", this.preference);
+        userValues.put("orderHistory", null);
 
         return userValues;
     }
