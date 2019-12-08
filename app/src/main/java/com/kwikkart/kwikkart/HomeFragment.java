@@ -1,6 +1,7 @@
 package com.kwikkart.kwikkart;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.util.Log;
@@ -15,6 +16,7 @@ import android.widget.SearchView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -40,8 +42,7 @@ public class HomeFragment extends Fragment {
     private FirebaseRecyclerOptions<Item> options;
     private Query query;
     private String queryString;
-    private String searchText;
-    private boolean searchStarted;
+    public static ArrayList<Item> allDatabaseItems;
     private static ArrayList<Item> itemsInCart  = new ArrayList<>();
 
     public HomeFragment()
@@ -54,23 +55,27 @@ public class HomeFragment extends Fragment {
 
 
         view = inflater.inflate(R.layout.fragment_home, container, false);
+        allDatabaseItems = new ArrayList<>();
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
         recycleView = view.findViewById(R.id.storelist);
         tabs = view.findViewById(R.id.tabs);
         searchView = view.findViewById(R.id.search);
         progressBar = getActivity().findViewById(R.id.progressBar);
         progressBar.setVisibility(View.VISIBLE);
-        searchText = "";
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+
+                Intent intent = new Intent(getActivity(), SearchedActivity.class);
+                intent.putExtra("searched_item", query);
+                startActivity(intent);
+
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-
 
                 return false;
             }
@@ -97,10 +102,9 @@ public class HomeFragment extends Fragment {
 
     private void initializePrimaryRecycler()
     {
-
         mAdapter = initializeAdapter(queryString);
-
         recycleView.setAdapter(mAdapter);
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         layoutManager.setReverseLayout(false);
         recycleView.setLayoutManager(layoutManager);
@@ -115,11 +119,13 @@ public class HomeFragment extends Fragment {
         options = new FirebaseRecyclerOptions.Builder<Item>().setQuery(query, Item.class).build();
 
         FirebaseRecyclerAdapter<Item, ViewHolder> mAdapter = new FirebaseRecyclerAdapter<Item, ViewHolder>(options) {
+
+
             @Override
             protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull Item model) {
 
                 holder.initializeView(model.getName(), model.getPrice(), model.getImage(), model);
-
+                allDatabaseItems.add(model);
             }
 
             @NonNull
@@ -128,14 +134,16 @@ public class HomeFragment extends Fragment {
 
                 View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.store_list_item, parent, false);
                 progressBar.setVisibility(View.GONE);
+
                 return new ViewHolder(view);
             }
 
             @Override
             public void updateOptions(@NonNull FirebaseRecyclerOptions<Item> options) {
                 super.updateOptions(options);
-
+                allDatabaseItems = new ArrayList<>();
             }
+
         };
 
         return mAdapter;

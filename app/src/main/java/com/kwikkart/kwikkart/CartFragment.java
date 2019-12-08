@@ -2,8 +2,6 @@ package com.kwikkart.kwikkart;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.graphics.Color;
-import android.os.AsyncTask;
 import android.os.Bundle;
 
 import android.util.Log;
