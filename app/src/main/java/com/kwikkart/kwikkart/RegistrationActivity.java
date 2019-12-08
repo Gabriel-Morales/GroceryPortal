@@ -39,7 +39,7 @@ public class RegistrationActivity extends AppCompatActivity {
         signupInputName = findViewById(R.id.name);
         signupInputPhoneNumber = findViewById(R.id.phoneNumber);
         signupInputCity = findViewById(R.id.city);
-        signupInputStreet = findViewById(R.id.address);
+        signupInputStreet = findViewById(R.id.number);
         signupInputZipCode = findViewById(R.id.zipcode);
         signupInputPreferences = findViewById(R.id.preference);
 
