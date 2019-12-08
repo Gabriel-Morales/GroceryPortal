@@ -20,66 +20,70 @@
             android:layout_width="283dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="50dp"
+            android:layout_marginStart="66dp"
             android:ems="10"
             android:inputType="text"
             app:layout_anchorGravity="end|bottom"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/password" />
+            app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
         <EditText
             android:id="@+id/password"
             android:layout_width="283dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="50dp"
+            android:layout_marginStart="66dp"
             android:ems="10"
             android:inputType="textPassword"
             app:layout_anchorGravity="end|bottom"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/email"
+            app:layout_constraintTop_toBottomOf="@+id/textView7"
             tools:ignore="MissingConstraints" />
 
         <EditText
             android:id="@+id/email"
             android:layout_width="280dp"
             android:layout_height="50dp"
+            android:layout_marginStart="66dp"
+            android:layout_marginTop="1dp"
             android:ems="10"
             android:fitsSystemWindows="false"
             android:inputType="textEmailAddress"
             android:layoutDirection="inherit"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/name" />
+            app:layout_constraintTop_toBottomOf="@+id/emailPrompt" />
 
         <TextView
-            android:id="@+id/name"
+            android:id="@+id/emailPrompt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="70dp"
+            android:layout_marginStart="66dp"
+            android:layout_marginTop="34dp"
             android:text="Enter your Email Address"
-            app:layout_constraintStart_toStartOf="@+id/email"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView9"
             tools:ignore="MissingConstraints" />
 
         <TextView
             android:id="@+id/textView7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="66dp"
+            android:layout_marginTop="22dp"
             android:text="Enter your Password"
-            app:layout_constraintBottom_toTopOf="@+id/password"
-            app:layout_constraintStart_toStartOf="@+id/password"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/email"
             tools:ignore="MissingConstraints" />
 
         <TextView
             android:id="@+id/textView8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="66dp"
+            android:layout_marginTop="19dp"
             android:text="Enter your First and Last Name"
-            app:layout_constraintBottom_toTopOf="@+id/name"
-            app:layout_constraintStart_toStartOf="@+id/name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/password"
             tools:ignore="MissingConstraints" />
 
         <TextView
@@ -96,90 +100,92 @@
             android:id="@+id/number"
             android:layout_width="285dp"
             android:layout_height="52dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginEnd="60dp"
             android:ems="10"
             android:inputType="textPostalAddress"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/name" />
+            app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
         <TextView
             android:id="@+id/textView10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="66dp"
+            android:layout_marginTop="19dp"
             android:text="Enter your Street Address"
-            app:layout_constraintBottom_toTopOf="@+id/number"
-            app:layout_constraintStart_toStartOf="@+id/number" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/name" />
 
         <EditText
             android:id="@+id/zipcode"
             android:layout_width="143dp"
             android:layout_height="47dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginStart="34dp"
             android:ems="10"
             android:inputType="number"
-            app:layout_constraintEnd_toStartOf="@+id/city"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/number" />
+            app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
         <TextView
             android:id="@+id/textView11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="34dp"
+            android:layout_marginTop="23dp"
             android:text="Enter Zipcode"
-            app:layout_constraintBottom_toTopOf="@+id/zipcode"
-            app:layout_constraintStart_toStartOf="@+id/zipcode" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/number" />
 
         <EditText
             android:id="@+id/city"
             android:layout_width="189dp"
             android:layout_height="45dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginEnd="30dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="25dp"
             android:ems="10"
             android:inputType="textPersonName"
-            app:layout_constraintBottom_toBottomOf="@+id/zipcode"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/number" />
+            app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
         <TextView
             android:id="@+id/textView12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="23dp"
+            android:layout_marginEnd="153dp"
             android:text="Enter City"
-            app:layout_constraintBottom_toTopOf="@+id/city"
-            app:layout_constraintStart_toStartOf="@+id/city" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/number" />
 
         <TextView
             android:id="@+id/textview13"
             android:layout_width="249dp"
             android:layout_height="21dp"
+            android:layout_marginStart="73dp"
+            android:layout_marginTop="26dp"
             android:ems="10"
             android:text="Enter any delivery preferences"
-            app:layout_constraintBottom_toTopOf="@+id/preference"
-            app:layout_constraintStart_toStartOf="@+id/preference" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/phoneNumber" />
 
         <EditText
             android:id="@+id/preference"
             android:layout_width="291dp"
             android:layout_height="107dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginEnd="47dp"
             android:ems="10"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/phoneNumber" />
+            app:layout_constraintTop_toBottomOf="@+id/textview13" />
 
         <Button
             android:id="@+id/registerButton"
             android:layout_width="154dp"
             android:layout_height="48dp"
-            android:layout_marginTop="35dp"
+            android:layout_marginStart="128dp"
+            android:layout_marginTop="22dp"
             android:background="@drawable/submit_button"
             android:onClick="createNewUser"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/preference" />
 
@@ -187,20 +193,21 @@
             android:id="@+id/phoneNumber"
             android:layout_width="283dp"
             android:layout_height="51dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginStart="73dp"
             android:ems="10"
             android:inputType="phone"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/zipcode" />
+            app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
         <TextView
             android:id="@+id/textView14"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="73dp"
+            android:layout_marginTop="24dp"
             android:text="Enter your Phone Number"
-            app:layout_constraintBottom_toTopOf="@+id/phoneNumber"
-            app:layout_constraintStart_toStartOf="@+id/phoneNumber" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/zipcode" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

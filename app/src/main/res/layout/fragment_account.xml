@@ -17,84 +17,6 @@
         android:layout_height="wrap_content"
         tools:context=".AccountFragment">
 
-        <TextView
-            android:id="@+id/name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="First and Last Name"
-            app:layout_constraintTop_toBottomOf="@+id/editButton"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="27dp" />
-
-        <TextView
-            android:id="@+id/textView11"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Enter Zipcode"
-            tools:layout_editor_absoluteX="40dp"
-            tools:layout_editor_absoluteY="507dp" />
-
-        <TextView
-            android:id="@+id/textView12"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Enter City"
-            tools:layout_editor_absoluteX="295dp"
-            tools:layout_editor_absoluteY="496dp" />
-
-        <TextView
-            android:id="@+id/textview13"
-            android:layout_width="249dp"
-            android:layout_height="21dp"
-            android:ems="10"
-            android:text="Enter any delivery preferences"
-            app:layout_constraintBottom_toTopOf="@+id/preference"
-            app:layout_constraintStart_toStartOf="@+id/preference" />
-
-        <EditText
-            android:id="@+id/preference"
-            android:layout_width="291dp"
-            android:layout_height="107dp"
-            android:layout_marginTop="292dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.333"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/phoneNumber" />
-
-        <Button
-            android:id="@+id/registerButton"
-            android:layout_width="154dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="35dp"
-            android:background="@drawable/submit_button"
-            android:onClick="createNewUser"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/preference" />
-
-        <EditText
-            android:id="@+id/phoneNumber"
-            android:layout_width="283dp"
-            android:layout_height="51dp"
-            android:ems="10"
-            android:inputType="phone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.375"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="597dp" />
-
-        <TextView
-            android:id="@+id/textView14"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Enter your Phone Number"
-            app:layout_constraintBottom_toTopOf="@+id/phoneNumber"
-            app:layout_constraintStart_toStartOf="@+id/phoneNumber" />
-
         <Button
             android:id="@+id/editButton"
             android:layout_width="wrap_content"
@@ -117,11 +39,22 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="27dp"
+            android:layout_marginTop="16dp"
+            android:text="First and Last Name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editButton"
+            tools:ignore="MissingConstraints" />
+
         <EditText
             android:id="@+id/editName"
             android:layout_width="360dp"
             android:layout_height="50dp"
-            android:layout_marginStart="24dp"
+            android:layout_marginStart="27dp"
             android:ems="10"
             android:inputType="textPersonName"
             app:layout_constraintStart_toStartOf="parent"
@@ -152,9 +85,136 @@
             android:id="@+id/password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="27dp"
+            android:layout_marginTop="22dp"
             android:text="@string/password"
-            tools:layout_editor_absoluteX="27dp"
-            tools:layout_editor_absoluteY="275dp" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editEmail" />
+
+        <EditText
+            android:id="@+id/editPassword"
+            android:layout_width="360dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="1dp"
+            android:ems="10"
+            android:inputType="textPassword"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/password" />
+
+        <TextView
+            android:id="@+id/phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="20dp"
+            android:text="Phone Number"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editPassword" />
+
+        <EditText
+            android:id="@+id/editPhone"
+            android:layout_width="360dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="28dp"
+            android:ems="10"
+            android:inputType="phone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/phone" />
+
+        <TextView
+            android:id="@+id/address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="24dp"
+            android:text="Street Address"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editPhone" />
+
+        <EditText
+            android:id="@+id/editAddress"
+            android:layout_width="360dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="27dp"
+            android:layout_marginTop="1dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/address" />
+
+        <TextView
+            android:id="@+id/city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="18dp"
+            android:text="City"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editAddress" />
+
+        <EditText
+            android:id="@+id/editCity"
+            android:layout_width="160dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="28dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/city" />
+
+        <TextView
+            android:id="@+id/zipcode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="128dp"
+            android:text="Zip Code"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editAddress" />
+
+        <EditText
+            android:id="@+id/editZip"
+            android:layout_width="160dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="24dp"
+            android:ems="10"
+            android:inputType="number"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/zipcode" />
+
+        <TextView
+            android:id="@+id/delivery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="16dp"
+            android:text="Delivery Preference"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editCity" />
+
+        <EditText
+            android:id="@+id/editDelivery"
+            android:layout_width="360dp"
+            android:layout_height="150dp"
+            android:layout_marginStart="28dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:inputType="textMultiLine"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/delivery" />
+
+        <Button
+            android:id="@+id/saveButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="160dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="#00AFFF"
+            android:text="Save"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editDelivery" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>
