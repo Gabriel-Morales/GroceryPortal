@@ -9,7 +9,7 @@
     android:background="#FFFFFF"
     android:backgroundTint="#FFFFFF"
     android:paddingBottom="56dp"
-    tools:context=".AccountFragment">
+    tools:context=".AccountFragment" >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
