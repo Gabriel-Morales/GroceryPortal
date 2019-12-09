@@ -4,10 +4,19 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
 
+import android.annotation.TargetApi;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -29,8 +38,13 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.kwikkart.kwikkart.model.Item;
+import com.kwikkart.kwikkart.model.Order;
 import com.kwikkart.kwikkart.model.User;
 
+import java.nio.channels.Channel;
+import java.util.Calendar;
+import java.util.Locale;
+import java.util.Random;
 import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -69,6 +83,7 @@ public class Checkout extends AppCompatActivity {
     private FloatingActionButton doneButton;
     private double total;
 
+    private final String CHANNEL_ID = "Unique_Channel";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -133,7 +148,7 @@ public class Checkout extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        createNotificationChannel();
        getSupportActionBar().setTitle("");
        getWindow().getDecorView().setSystemUiVisibility(0);
 
@@ -228,12 +243,39 @@ public class Checkout extends AppCompatActivity {
         doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+
+                //TODO: Upload  just number of  items in cart and current date to database. Pick a random num from 1 to 7 and that's the delivery date.
+                Random r = new Random();
+                int timeFrame = r.nextInt(8) + 1;
+                int itemsInCart = HomeFragment.getCart().size();
+
+                Calendar today = Calendar.getInstance();
+                String currentMonth = today.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.US);
+                String currentDayOfMonth = today.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.US);
+                String currentDayOfMonthNum = ""+today.get(Calendar.DAY_OF_MONTH);
+                String orderDate =  currentDayOfMonth + ", " + currentMonth + " " + currentDayOfMonthNum;
+
+                today.add(Calendar.DAY_OF_MONTH, timeFrame);
+                String deliveryDate = today.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.US) + ", " + today.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.US) + " " + today.get(Calendar.DAY_OF_MONTH);
+
+
+                String orderID = orderIDgen();
+                Order order = new Order(orderDate, deliveryDate, itemsInCart);
+                fDatabase.collection("users").document(email).collection("order").document(orderID).set(order.toMap());
+
+                Notification builder = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID).setSmallIcon(R.drawable.ic_notifications_black_24dp).setContentTitle("Kwik Kart Delivery").setContentText("Order placed on " + orderDate).setPriority(NotificationCompat.PRIORITY_HIGH).setDefaults(NotificationCompat.DEFAULT_SOUND).build();
+                NotificationManager notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
+
+
+                notificationManager.notify(192, builder);
+
+
                 int size = HomeFragment.getCart().size();
                 HomeFragment.clearCart();
                 CartFragment.notifCartAdapter.notifyItemRangeRemoved(0, size);
                 finish();
-
-                //TODO: Upload  just number of  items in cart and current date to database. Pick a random num from 1 to 7 and that's the delivery date.
 
             }
         });
@@ -266,6 +308,37 @@ public class Checkout extends AppCompatActivity {
 
         }
         return total;
+    }
+
+    private void createNotificationChannel() {
+        // Create the NotificationChannel, but only on API 26+ because
+        // the NotificationChannel class is new and not in the support library
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = getString(R.string.channel_name);
+            String description = getString(R.string.channel_description);
+            int importance = NotificationManager.IMPORTANCE_HIGH;
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
+            channel.setDescription(description);
+            // Register the channel with the system; you can't change the importance
+            // or other notification behaviors after this
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
+    }
+
+    private String orderIDgen()
+    {
+        String str = "";
+        Random r = new Random();
+
+        int i = 0;
+        while (i < 10)
+        {
+            str += r.nextInt(8321);
+            i += 1;
+        }
+
+        return str;
     }
 
 }
