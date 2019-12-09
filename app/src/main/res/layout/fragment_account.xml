@@ -8,7 +8,6 @@
     android:layout_marginBottom="5dp"
     android:background="#FFFFFF"
     android:backgroundTint="#FFFFFF"
-
     android:paddingBottom="56dp"
     tools:context=".AccountFragment">
 
@@ -16,7 +15,7 @@
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:context=".AccountFragment">
+        tools:context=".AccountFragment" >
 
         <Button
             android:id="@+id/editButton"
