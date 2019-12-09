@@ -262,7 +262,7 @@ public class Checkout extends AppCompatActivity {
 
 
                 String orderID = orderIDgen();
-                Order order = new Order(orderDate, deliveryDate, itemsInCart);
+                Order order = new Order(orderDate, deliveryDate, ""+itemsInCart, ""+total);
                 fDatabase.collection("users").document(email).collection("order").document(orderID).set(order.toMap());
 
                 Notification builder = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID).setSmallIcon(R.drawable.ic_notifications_black_24dp).setContentTitle("Kwik Kart Delivery").setContentText("Order placed on " + orderDate).setPriority(NotificationCompat.PRIORITY_HIGH).setDefaults(NotificationCompat.DEFAULT_SOUND).build();

@@ -5,47 +5,61 @@ import java.util.Map;
 
 public class Order {
 
-    private String dateOfOrder;
-    private String dateOfDelivery;
-    private int itemsOrdered;
+    private String orderDate;
+    private String deliverDate;
+    private String itemsOrdered;
+    private String pricePaid;
 
-    public Order(String dateOfOrder, String dateOfDelivery, int itemsOrdered){
-      this.dateOfOrder = dateOfOrder;
-      this.dateOfDelivery = dateOfDelivery;
+    public Order()
+    {}
+
+
+    public Order(String orderDate, String deliverDate, String itemsOrdered, String pricePaid){
+      this.orderDate = orderDate;
+      this.deliverDate = deliverDate;
       this.itemsOrdered = itemsOrdered;
+      this.pricePaid = pricePaid;
     }
 
     public Map<String, Object> toMap(){
         Map<String, Object> orderValues = new HashMap<>();
-        orderValues.put("order_date", this.dateOfOrder);
-        orderValues.put("deliver_date", this.dateOfDelivery);
-        orderValues.put("items_ordered", this.itemsOrdered);
-
+        orderValues.put("orderDate", this.orderDate);
+        orderValues.put("deliverDate", this.deliverDate);
+        orderValues.put("itemsOrdered", this.itemsOrdered);
+        orderValues.put("pricePaid", this.pricePaid);
 
         return orderValues;
     }
 
-    public String getDateOfOrder() {
-        return dateOfOrder;
+    public String getOrderDate() {
+        return orderDate;
     }
 
-    public void setDateOfOrder(String dateOfOrder) {
-        this.dateOfOrder = dateOfOrder;
+    public void setOrderDate(String orderDate) {
+        this.orderDate = orderDate;
     }
 
-    public String getDateOfDelivery() {
-        return dateOfDelivery;
+    public String getDeliverDate() {
+        return deliverDate;
     }
 
-    public void setDateOfDelivery(String dateOfDelivery) {
-        this.dateOfDelivery = dateOfDelivery;
+    public void setDeliverDate(String deliverDate) {
+        this.deliverDate = deliverDate;
     }
 
-    public int getItemsOrdered() {
+    public String getItemsOrdered() {
         return itemsOrdered;
     }
 
-    public void setItemsOrdered(int itemsOrdered) {
+    public void setItemsOrdered(String itemsOrdered) {
         this.itemsOrdered = itemsOrdered;
+    }
+
+    public String getPricePaid() {
+        return pricePaid;
+    }
+
+    public void setPricePaid(String pricePaid) {
+        this.pricePaid = pricePaid;
     }
 }
