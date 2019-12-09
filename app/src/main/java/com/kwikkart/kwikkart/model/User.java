@@ -46,5 +46,30 @@ public class User {
         return userValues;
     }
 
+    public String getEmail()
+    {
+        return email;
+    }
+
+    public String getName()
+    {
+        return name;
+    }
+
+    public String getBillingAddress()
+    {
+        return billingAddress;
+    }
+
+    public String getPhoneNumber()
+    {
+        return phoneNumber;
+    }
+
+    public String getPreference()
+    {
+        return  preference;
+    }
+
 
 }

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
+
+        android:layout_width="match_parent"
+        android:layout_height="192dp">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+
+            app:toolbarId="@+id/toolbar">
+
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"></androidx.appcompat.widget.Toolbar>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/nameText"
+                    android:layout_width="193dp"
+                    android:layout_height="29dp"
+                    android:text="TextView"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.073"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.668" />
+
+                <TextView
+                    android:id="@+id/addressText"
+                    android:layout_width="361dp"
+                    android:layout_height="36dp"
+                    android:layout_marginStart="16dp"
+                    android:text="TextView"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/nameText"
+                    app:layout_constraintVertical_bias="0.611" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView2"
+        android:layout_width="match_parent"
+
+
+        android:layout_height="match_parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:transitionName="checkoutTransition"
+            tools:context=".Checkout">
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:clickable="true"
+        android:src="@drawable/ic_done_black_24dp" />
+
+    <ProgressBar
+        android:id="@+id/checkProgress"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_anchor="@+id/nestedScrollView2"
+        app:layout_anchorGravity="center" />"
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

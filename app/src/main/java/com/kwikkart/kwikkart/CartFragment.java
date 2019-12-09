@@ -1,17 +1,25 @@
 package com.kwikkart.kwikkart;
 
+import android.animation.Animator;
+import android.animation.AnimatorInflater;
+import android.app.ActivityOptions;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.util.Log;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityOptionsCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -54,10 +62,12 @@ public class CartFragment extends Fragment {
                 {
                     return;
                 }
-                else
-                {
-                    //Bring up checkout view.
-                    Log.d("MY_TAG2", "Checkout button pressed");
+                else {
+                    Intent intent = new Intent(getActivity(), Checkout.class);
+
+                    ActivityOptionsCompat aco = ActivityOptionsCompat.makeClipRevealAnimation(getView(), (int) floatingActionButton.getX(), (int) floatingActionButton.getY(), 200, 200);
+
+                    startActivity(intent, aco.toBundle());
                 }
             }
         });

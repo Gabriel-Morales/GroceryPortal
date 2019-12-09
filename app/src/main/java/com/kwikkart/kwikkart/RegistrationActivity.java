@@ -46,6 +46,7 @@ public class RegistrationActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         fDatabase = FirebaseFirestore.getInstance();
 
+
         btnSignUp = findViewById(R.id.registerButton);
     }
 
@@ -78,6 +79,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 }
             }
         });
+
 
         //This adds the metadata for new user into the user firestore collection
         fDatabase.collection("users").document(email).set(user.toMap());

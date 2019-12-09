@@ -39,7 +39,8 @@
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_credit_card_black_24dp" />
+        app:srcCompat="@drawable/ic_credit_card_black_24dp"
+        android:transitionName="checkoutTransition"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/cartRecycler"
