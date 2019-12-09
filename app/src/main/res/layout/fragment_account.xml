@@ -9,6 +9,7 @@
     android:background="#FFFFFF"
     android:backgroundTint="#FFFFFF"
     android:fitsSystemWindows="true"
+    android:paddingBottom="56dp"
     tools:context=".AccountFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
