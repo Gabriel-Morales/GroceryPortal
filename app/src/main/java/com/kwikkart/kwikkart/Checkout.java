@@ -1,15 +1,19 @@
 package com.kwikkart.kwikkart;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.drawable.DrawableCompat;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -56,8 +60,10 @@ public class Checkout extends AppCompatActivity {
     private TextView emailInfo;
     private TextView phone;
     private String email;
+    private Spinner couponSpinner;
     private TextView preferences;
     private Toolbar toolbar;
+    private TextView couponText;
     private User user;
     private Spinner paySelect;
     private FloatingActionButton doneButton;
@@ -86,6 +92,8 @@ public class Checkout extends AppCompatActivity {
         phone = findViewById(R.id.phone);
         preferences = findViewById(R.id.preferences);
         totalText = findViewById(R.id.totalText);
+        couponText = findViewById(R.id.couponText);
+        couponSpinner = findViewById(R.id.couponSpinner);
 
         payText = findViewById(R.id.payText);
         cardNum = findViewById(R.id.cardNum);
@@ -118,6 +126,9 @@ public class Checkout extends AppCompatActivity {
         payText.setVisibility(View.INVISIBLE);
         cardNum.setVisibility(View.INVISIBLE);
         totalText.setVisibility(View.INVISIBLE);
+        couponText.setVisibility(View.INVISIBLE);
+        couponSpinner.setVisibility(View.INVISIBLE);
+
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -154,7 +165,9 @@ public class Checkout extends AppCompatActivity {
                 delivPref.setVisibility(View.VISIBLE);
                 payText.setVisibility(View.VISIBLE);
                 cardNum.setVisibility(View.VISIBLE);
-                totalText.setVisibility(View.INVISIBLE);
+                totalText.setVisibility(View.VISIBLE);
+                couponText.setVisibility(View.VISIBLE);
+                couponSpinner.setVisibility(View.VISIBLE);
             }
         });
 
@@ -164,7 +177,7 @@ public class Checkout extends AppCompatActivity {
         es.execute(new Runnable() {
             @Override
             public void run() {
-                total = calculateTotal();
+                calculateTotal();
                 grandTotal.setText(String.format("$%.2f", total));
 
             }
@@ -175,6 +188,42 @@ public class Checkout extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, cards);
         paySelect.setAdapter(adapter);
 
+        String[] availCoupons = {"None", "10% off", "15% off",  "20%off"};
+        ArrayAdapter<String> couponAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, availCoupons);
+       couponSpinner.setAdapter(couponAdapter);
+
+       couponSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+           @Override
+           public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+               double newPrice = total;
+               switch (position)
+               {
+                   case 0:
+                       newPrice = total;
+                       break;
+                   case 1:
+                       newPrice = total - (.10 * total);
+                       break;
+                   case 2:
+                       newPrice = total - (.15 * total);
+                       break;
+                   case 3:
+                       newPrice = total - (.20 * total);
+                       break;
+                   default:
+                       break;
+               }
+
+               grandTotal.setText(String.format("$%.2f", newPrice));
+
+           }
+
+           @Override
+           public void onNothingSelected(AdapterView<?> parent) {
+
+           }
+       });
 
         doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -205,7 +254,7 @@ public class Checkout extends AppCompatActivity {
     private double calculateTotal()
     {
 
-        double total = 0;
+        total = 0;
 
         Pattern expression = Pattern.compile("\\$([0-9]+\\.[0-9]+).*");
         for (Item item : HomeFragment.getCart())
