@@ -2,10 +2,13 @@ package com.kwikkart.kwikkart;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.graphics.drawable.DrawableCompat;
 
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -26,6 +29,7 @@ public class Checkout extends AppCompatActivity {
     private ProgressBar progressBar;
     private TextView addressText;
     private String email;
+    private Toolbar toolbar;
     private User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +45,14 @@ public class Checkout extends AppCompatActivity {
         progressBar = findViewById(R.id.checkProgress);
         nameText.setVisibility(View.INVISIBLE);
         addressText.setVisibility(View.INVISIBLE);
+        toolbar = findViewById(R.id.myToolbar);
+
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+       getSupportActionBar().setTitle("");
+       getWindow().getDecorView().setSystemUiVisibility(0);
 
         DocumentReference docRef = fDatabase.collection("users").document(email);
         docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
@@ -58,4 +70,16 @@ public class Checkout extends AppCompatActivity {
 
 
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
 }
