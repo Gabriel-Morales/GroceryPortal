@@ -82,6 +82,18 @@
             tools:context=".Checkout">
 
             <TextView
+                android:id="@+id/couponText"
+                android:layout_width="179dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="16dp"
+                android:text="Available Coupons"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/totalText"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
                 android:id="@+id/totalText"
                 android:layout_width="148dp"
                 android:layout_height="50dp"
@@ -99,7 +111,8 @@
                 android:layout_width="137dp"
                 android:layout_height="48dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="29dp"
+                android:layout_marginTop="24dp"
+                android:gravity="center|left"
                 android:text="TextView"
                 android:textColor="#43A047"
                 android:textSize="20sp"
@@ -114,7 +127,7 @@
                 android:layout_width="199dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="7dp"
+                android:layout_marginTop="28dp"
                 android:text="Payment Method"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -275,6 +288,16 @@
                 app:layout_constraintHorizontal_bias="0.012"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/deliPref" />
+
+            <Spinner
+                android:id="@+id/couponSpinner"
+                android:layout_width="187dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="28dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.608"
+                app:layout_constraintStart_toEndOf="@+id/grandTotal"
+                app:layout_constraintTop_toTopOf="@+id/couponText" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
