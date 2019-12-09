@@ -61,6 +61,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/nameText"
                     app:layout_constraintVertical_bias="0.611" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
@@ -80,11 +81,207 @@
             android:transitionName="checkoutTransition"
             tools:context=".Checkout">
 
+            <TextView
+                android:id="@+id/totalText"
+                android:layout_width="148dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="16dp"
+                android:text="Amount due"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.06"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/grandTotal"
+                android:layout_width="137dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="29dp"
+                android:text="TextView"
+                android:textColor="#43A047"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/totalText" />
+
+            <TextView
+                android:id="@+id/payText"
+                android:layout_width="199dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="7dp"
+                android:text="Payment Method"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/grandTotal" />
+
+            <Spinner
+                android:id="@+id/paymentSelect"
+                style="@android:style/Widget.Material.Light.Spinner"
+                android:layout_width="129dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/payText" />
+
+            <EditText
+                android:id="@+id/cardNum"
+                android:layout_width="239dp"
+                android:layout_height="49dp"
+                android:ems="10"
+                android:hint="Card Number"
+                android:inputType="number"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.407"
+                app:layout_constraintStart_toEndOf="@+id/paymentSelect"
+                app:layout_constraintTop_toBottomOf="@+id/payText"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <EditText
+                android:id="@+id/cvv"
+                android:layout_width="118dp"
+                android:layout_height="44dp"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:hint="CVV"
+                android:inputType="number"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.054"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/paymentSelect" />
+
+            <EditText
+                android:id="@+id/expire"
+                android:layout_width="237dp"
+                android:layout_height="49dp"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:hint="Expiration Date"
+                android:inputType="date"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.908"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardNum" />
+
+            <TextView
+                android:id="@+id/personalInfo"
+                android:layout_width="212dp"
+                android:layout_height="33dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="52dp"
+                android:text="Personal Information"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/holderName" />
+
+            <EditText
+                android:id="@+id/holderName"
+                android:layout_width="378dp"
+                android:layout_height="46dp"
+                android:layout_marginTop="21dp"
+                android:ems="10"
+                android:hint="Cardholder Name"
+                android:inputType="textPersonName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/expire" />
+
+            <TextView
+                android:id="@+id/emailText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Email"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.048"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/personalInfo" />
+
+            <TextView
+                android:id="@+id/email"
+                android:layout_width="148dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="20dp"
+                android:text="TextView"
+                android:textSize="17sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.304"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/personalInfo" />
+
+            <TextView
+                android:id="@+id/numText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="64dp"
+                android:text="Phone"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/personalInfo" />
+
+            <TextView
+                android:id="@+id/phone"
+                android:layout_width="139dp"
+                android:layout_height="27dp"
+                android:layout_marginTop="64dp"
+                android:text="TextView"
+                android:textSize="17sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.294"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/personalInfo" />
+
+            <TextView
+                android:id="@+id/deliPref"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="44dp"
+                android:text="Delivery Preferences"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.072"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/phone" />
+
+            <TextView
+                android:id="@+id/preferences"
+                android:layout_width="315dp"
+                android:layout_height="154dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:text="TextView"
+                android:textSize="17sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.012"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/deliPref" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/doneButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
@@ -98,6 +295,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_anchor="@+id/nestedScrollView2"
-        app:layout_anchorGravity="center" />"
+        app:layout_anchorGravity="center" />
+
+    "
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

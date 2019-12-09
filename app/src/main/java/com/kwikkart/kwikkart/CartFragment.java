@@ -34,6 +34,7 @@ public class CartFragment extends Fragment {
     private FloatingActionButton floatingActionButton;
     private View view;
     private RecyclerView recyclerView;
+    public static CartAdapter notifCartAdapter;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -44,6 +45,7 @@ public class CartFragment extends Fragment {
 
 
         final CartAdapter cartAdapter = new CartAdapter(getContext(), cartToolbar);
+        notifCartAdapter = cartAdapter;
         recyclerView.setAdapter(cartAdapter);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         layoutManager.setReverseLayout(false);
@@ -101,5 +103,9 @@ public class CartFragment extends Fragment {
          return view;
     }
 
-
+    @Override
+    public void onResume() {
+        super.onResume();
+        cartToolbar.setTitle(HomeFragment.getCart().size() + " items in cart");
+    }
 }
