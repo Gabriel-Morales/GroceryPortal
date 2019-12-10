@@ -7,6 +7,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +26,8 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.kwikkart.kwikkart.model.User;
+
+import static androidx.constraintlayout.widget.Constraints.TAG;
 
 
 /**
@@ -66,7 +70,7 @@ public class AccountFragment extends Fragment {
         editZip = view.findViewById(R.id.editZip);
         editDelivery = view.findViewById(R.id.editDelivery);
 
-        DocumentReference docRef = fDatabase.collection("users").document(emailAddress);
+        final DocumentReference docRef = fDatabase.collection("users").document(emailAddress);
         docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
 
             @Override
@@ -108,11 +112,146 @@ public class AccountFragment extends Fragment {
             }
         });
 
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!editName.getText().equals("") && editName.getText() != null && !TextUtils.isEmpty(editName.getText()))
+                {
+                    user.setName(editName.getText().toString());
+                }
+
+                if(!editEmail.getText().equals("") && editEmail.getText() != null && !TextUtils.isEmpty(editEmail.getText()))
+                {
+                    user.setEmail(editEmail.getText().toString());
+                }
+
+                if(!editPhone.getText().equals("") && editPhone.getText() != null && !TextUtils.isEmpty(editPhone.getText()))
+                {
+                    user.setPhoneNumber(editPhone.getText().toString());
+                }
+
+                if(!editDelivery.getText().equals("") && editDelivery.getText() != null && !TextUtils.isEmpty(editDelivery.getText()))
+                {
+                    user.setPreference(editDelivery.getText().toString());
+                }
+
+                if(!editAddress.getText().equals("") && editAddress.getText() != null && !TextUtils.isEmpty(editAddress.getText()))
+                {
+                    String newAddress = user.getBillingAddress();
+                    String splitAddress[] = newAddress.split(" ");
+
+                    newAddress = editAddress.getText().toString();
+
+                    if(!editCity.getText().equals("") && editCity.getText() != null && !TextUtils.isEmpty(editCity.getText()))
+                    {
+                        newAddress = newAddress + " " + editCity.getText().toString();
+
+                        if(!editZip.getText().equals("") && editZip.getText() != null && !TextUtils.isEmpty(editZip.getText()))
+                        {
+                            newAddress = newAddress + " " + editZip.getText().toString();
+                        }
+                        else
+                        {
+                            if(splitAddress.length == 6)
+                            {
+                                newAddress = newAddress + " " + splitAddress[5];
+                            }
+                            else if(splitAddress.length == 7)
+                            {
+                                newAddress = newAddress + " " + splitAddress[6];
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if(splitAddress.length == 6)
+                        {
+                            newAddress = newAddress + " " + splitAddress[3] + " " + splitAddress[4];
+                        }
+                        else if(splitAddress.length == 7)
+                        {
+                            newAddress = newAddress + " " + splitAddress[3] + " " + splitAddress[4] + " " + splitAddress[5];
+                        }
+
+                        if(!editZip.getText().equals("") && editZip.getText() != null && !TextUtils.isEmpty(editZip.getText()))
+                        {
+                            newAddress = newAddress + " " + editZip.getText().toString();
+                        }
+                        else
+                        {
+                            if(splitAddress.length == 6)
+                            {
+                                newAddress = newAddress + " " + splitAddress[5];
+                            }
+                            else if(splitAddress.length == 7)
+                            {
+                                newAddress = newAddress + " " + splitAddress[6];
+                            }
+                        }
+                    }
+                    user.setBillingAddress(newAddress);
+                }
+                else
+                {
+                    String newAddress = user.getBillingAddress();
+                    String splitAddress[] = newAddress.split(" ");
+
+                    newAddress = splitAddress[0] + " " + splitAddress[1] + " " + splitAddress[2];
+
+                    if(!editCity.getText().equals("") && editCity.getText() != null && !TextUtils.isEmpty(editCity.getText()))
+                    {
+                        newAddress = newAddress + " " + editCity.getText().toString();
+
+                        if(!editZip.getText().equals("") && editZip.getText() != null && !TextUtils.isEmpty(editZip.getText()))
+                        {
+                            newAddress = newAddress + " " + editZip.getText().toString();
+                        }
+                        else
+                        {
+                            if(splitAddress.length == 6)
+                            {
+                                newAddress = newAddress + " " + splitAddress[5];
+                            }
+                            else if(splitAddress.length == 7)
+                            {
+                                newAddress = newAddress + " " + splitAddress[6];
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if(splitAddress.length == 6)
+                        {
+                            newAddress = newAddress + " " + splitAddress[3] + " " + splitAddress[4];
+                        }
+                        else if(splitAddress.length == 7)
+                        {
+                            newAddress = newAddress + " " + splitAddress[3] + " " + splitAddress[4] + " " + splitAddress[5];
+                        }
+
+                        if(!editZip.getText().equals("") && editZip.getText() != null && !TextUtils.isEmpty(editZip.getText()))
+                        {
+                            newAddress = newAddress + " " + editZip.getText().toString();
+                        }
+                        else
+                        {
+                            if(splitAddress.length == 6)
+                            {
+                                newAddress = newAddress + " " + splitAddress[5];
+                            }
+                            else if(splitAddress.length == 7)
+                            {
+                                newAddress = newAddress + " " + splitAddress[6];
+                            }
+                        }
+                    }
+                    user.setBillingAddress(newAddress);
+                }
+                docRef.update(user.toMap());
+            }
+        });
+
         return view;
     }
 
-    public void saveData(View view)
-    {
-
-    }
 }

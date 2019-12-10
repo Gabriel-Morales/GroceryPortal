@@ -70,4 +70,23 @@ public class User {
     {
         return  preference;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setBillingAddress(String billingAddress) {
+        this.billingAddress = billingAddress;
+    }
+
+    public void setPreference(String preference) {
+        this.preference = preference;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 }
