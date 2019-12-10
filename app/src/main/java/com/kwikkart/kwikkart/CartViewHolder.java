@@ -26,6 +26,10 @@ public class CartViewHolder extends RecyclerView.ViewHolder {
     private CartAdapter cartAdapter;
     private Toolbar parentToolbar;
 
+    /**
+     * CartViewHolder
+     * @param itemView @NonNull View
+     */
     public CartViewHolder(@NonNull View itemView) {
         super(itemView);
         image = itemView.findViewById(R.id.cartImage);
@@ -34,6 +38,13 @@ public class CartViewHolder extends RecyclerView.ViewHolder {
         removeFromCart = itemView.findViewById(R.id.removeItem);
     }
 
+    /**
+     *  initializeView
+     * @param name String
+     * @param price String
+     * @param imagePath String
+     * @param item Item
+     */
     public void initializeView(String name, String price, String imagePath, Item item)
     {
         this.name.setText(name);
@@ -73,26 +84,46 @@ public class CartViewHolder extends RecyclerView.ViewHolder {
 
     }
 
+    /**
+     *  setParentToolbar
+     * @param parentToolbar Toolbar
+     */
     public void setParentToolbar(Toolbar parentToolbar)
     {
         this.parentToolbar = parentToolbar;
     }
 
+    /**
+     * setParentAdapter
+     * @param cartAdapter CartAdapter
+     */
     public void setParentAdapter(CartAdapter cartAdapter)
     {
         this.cartAdapter = cartAdapter;
     }
 
+    /**
+     *  setItem
+     * @param item Item
+     */
     public void setItem(Item item)
     {
         this.item = item;
     }
 
+    /**
+     * getItem
+     * @return item
+     */
     public Item getItem()
     {
         return item;
     }
 
+    /**
+     * getName
+     * @return String
+     */
     public String getName()
     {
         return name.getText().toString();

@@ -28,6 +28,10 @@ public class RegistrationActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseFirestore fDatabase;
 
+    /**
+     * onCreate
+     * @param savedInstanceState Bundle
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,12 +57,11 @@ public class RegistrationActivity extends AppCompatActivity {
 
 
     /**
+     * createNewUser
      * This method takes the registration form input to create a new user account
      * upon success, user is signed in automatically
      *
-     * @param view
-     *
-     * @return void
+     * @param view View
      */
     public void createNewUser(View view){
         String email = signupInputEmail.getText().toString();

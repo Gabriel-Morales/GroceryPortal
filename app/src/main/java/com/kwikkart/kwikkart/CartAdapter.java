@@ -16,13 +16,24 @@ public class CartAdapter extends RecyclerView.Adapter<CartViewHolder> {
     private Context context;
     private Toolbar parentToolbar;
 
+    /**
+     * CartAdapter
+     *  Constructor for Cart Adapter class
+     * @param context
+     * @param parentToolbar
+     */
     public CartAdapter(Context context, Toolbar parentToolbar)
     {
         this.context = context;
         this.parentToolbar = parentToolbar;
     }
 
-
+    /**
+     * onCreateViewHolder
+     * @param parent @NonNull ViewGroup
+     * @param viewType int
+     * @return CartViewHolder
+     */
     @NonNull
     @Override
     public CartViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -33,12 +44,21 @@ public class CartAdapter extends RecyclerView.Adapter<CartViewHolder> {
         return cvh;
     }
 
+    /**
+     * onBindViewHolder
+     * @param holder CartViewHolder
+     * @param position int
+     */
     @Override
     public void onBindViewHolder(@NonNull CartViewHolder holder, int position) {
         Item item = HomeFragment.getCart().get(position);
         holder.initializeView(item.getName(), item.getPrice(), item.getImage(), item);
     }
 
+    /**
+     * getItemCount
+     * @return int count of items
+     */
     @Override
     public int getItemCount() {
         return HomeFragment.getCart().size();

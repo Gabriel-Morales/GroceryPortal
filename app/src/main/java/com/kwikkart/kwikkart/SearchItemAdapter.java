@@ -16,12 +16,23 @@ public class SearchItemAdapter  extends RecyclerView.Adapter<ViewHolder> {
     private int itemCount;
     private ArrayList<Item> allDatabaseItems;
 
+    /**
+     * SearchItemAdapter
+     * @param itemCount int
+     * @param allItems ArrayList<Item>
+     */
     public SearchItemAdapter(int itemCount, ArrayList<Item> allItems)
     {
         this.itemCount = itemCount;
         allDatabaseItems = allItems;
     }
 
+    /**
+     * onCreateViewHolder
+     * @param parent @NonNull ViewGroup
+     * @param viewType int
+     * @return ViewHolder
+     */
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -29,6 +40,11 @@ public class SearchItemAdapter  extends RecyclerView.Adapter<ViewHolder> {
         return new ViewHolder(view);
     }
 
+    /**
+     * onBindViewHolder
+     * @param holder @NonNull ViewHolder
+     * @param position int
+     */
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Item currentItem = allDatabaseItems.get(position);
@@ -36,6 +52,10 @@ public class SearchItemAdapter  extends RecyclerView.Adapter<ViewHolder> {
         holder.initializeView(item.getName(), item.getPrice(), item.getImage(), item);
     }
 
+    /**
+     * getItemCount
+     * @return int
+     */
     @Override
     public int getItemCount() {
         return itemCount;

@@ -85,6 +85,10 @@ public class Checkout extends AppCompatActivity {
 
     private final String CHANNEL_ID = "Unique_Channel";
 
+    /**
+     * onCreate
+     * @param savedInstanceState vundle
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -281,6 +285,11 @@ public class Checkout extends AppCompatActivity {
 
     }
 
+    /**
+     * onOptionsItemSelected
+     * @param item menuItem
+     * @return boolean
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -292,6 +301,10 @@ public class Checkout extends AppCompatActivity {
         }
     }
 
+    /**
+     *  calculateTotal
+     * @return double
+     */
     private double calculateTotal()
     {
 
@@ -309,6 +322,10 @@ public class Checkout extends AppCompatActivity {
         return total;
     }
 
+    /**
+     * createNotificationChannel
+     * Creates Notification Channel
+     */
     private void createNotificationChannel() {
         // Create the NotificationChannel, but only on API 26+ because
         // the NotificationChannel class is new and not in the support library
@@ -325,6 +342,10 @@ public class Checkout extends AppCompatActivity {
         }
     }
 
+    /**
+     * orderIDgen
+     * @return String
+     */
     private String orderIDgen()
     {
         String str = "";

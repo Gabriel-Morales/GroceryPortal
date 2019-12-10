@@ -42,6 +42,7 @@ public class AccountFragment extends Fragment {
     }
 
     /**
+     *  onCreateView
      * Logs the user out if the logoutButton is clicked
      * Updates the user information when the user enters new information and clicks save
      * Makes sure the user sees what they type

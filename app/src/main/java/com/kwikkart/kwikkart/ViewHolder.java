@@ -28,6 +28,10 @@ public class ViewHolder extends RecyclerView.ViewHolder {
     private Button addToCart;
     private Item item;
 
+    /**
+     * ViewHolder
+     * @param view View
+     */
     public ViewHolder(View view)
     {
         super(view);
@@ -37,6 +41,13 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         addToCart = view.findViewById(R.id.addToCart);
     }
 
+    /**
+     * initializeView
+     * @param name String
+     * @param price String
+     * @param imagePath String
+     * @param item Item
+     */
     public void initializeView(String name, String price, String imagePath, Item item)
     {
         this.name.setText(name);
@@ -71,17 +82,28 @@ public class ViewHolder extends RecyclerView.ViewHolder {
 
     }
 
-
+    /**
+     * setItem
+     * @param item Item
+     */
     public void setItem(Item item)
     {
         this.item = item;
     }
 
+    /**
+     * getItem
+     * @return Item
+     */
     public Item getItem()
     {
         return item;
     }
 
+    /**
+     * getName
+     * @return String
+     */
     public String getName()
     {
         return name.getText().toString();

@@ -19,18 +19,22 @@ public class SettingsFragment extends Fragment  {
 
     private Switch turnOff, confirm, leaving, arrive;
 
+    /**
+     * SettingsFragment
+     */
     public SettingsFragment() {
         // Required empty public constructor
     }
 
     /**
+     * onCreateView
      * Sets all of the notifications on by default
      * Turns all notifications off if turnOff switch is on
      *
-     * @param inflater
-     * @param container
-     * @param savedInstanceState
-     * @return view
+     * @param inflater LayoutInflater
+     * @param container ViewGroup
+     * @param savedInstanceState Bundle
+     * @return View
      */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
