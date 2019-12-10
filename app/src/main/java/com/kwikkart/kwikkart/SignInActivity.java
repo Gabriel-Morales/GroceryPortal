@@ -27,13 +27,13 @@ public class SignInActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_in);
-        getWindow().setStatusBarColor(Color.rgb(100 , 193, 255));
+        getWindow().setStatusBarColor(Color.WHITE);
 
         uName = findViewById(R.id.uNameText);
         view = findViewById(R.id.signInView);
         passText = findViewById(R.id.passText);
 
-        view.setBackgroundColor(Color.WHITE);
+        view.setBackgroundColor(Color.parseColor("#FAFAFA"));
         mAuth = FirebaseAuth.getInstance();
         intent = new Intent(this, Home.class);
         if (mAuth.getCurrentUser() != null) {
@@ -76,6 +76,12 @@ public class SignInActivity extends AppCompatActivity {
             }
         });
 
+    }
+    //No need to implement this to the tiniest detail. It just notifies that an email has been sent.
+    public void forgetPassword(View view)
+    {
+        Toast.makeText(SignInActivity.this, "Reset password link sent to email.",
+                Toast.LENGTH_SHORT).show();
     }
 
 }
