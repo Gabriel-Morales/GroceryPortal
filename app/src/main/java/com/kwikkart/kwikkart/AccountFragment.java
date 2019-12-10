@@ -11,8 +11,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 
 /**
@@ -20,7 +23,12 @@ import com.google.firebase.auth.FirebaseAuth;
  */
 public class AccountFragment extends Fragment {
 
-    private Button logoutButton;
+    private Button logoutButton, editButton, saveButton;
+    private EditText editName, editEmail, editPassword, editPhone, editAddress, editCity, editZip, editDelivery;
+    private TextView name, email, password, phone, address, city, zipcode, delivery;
+
+    private FirebaseAuth mAuth;
+    private FirebaseFirestore fDatabase;
 
     public AccountFragment() {
         // Required empty public constructor
