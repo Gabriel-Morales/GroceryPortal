@@ -30,7 +30,7 @@ import com.kwikkart.kwikkart.model.User;
  */
 public class AccountFragment extends Fragment {
 
-    private Button logoutButton, editButton, saveButton;
+    private Button logoutButton, saveButton;
     private EditText editName, editEmail, editPassword, editPhone, editAddress, editCity, editZip, editDelivery;
     private TextView name, email, password, phone, address, city, zipcode, delivery;
 
@@ -56,7 +56,6 @@ public class AccountFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_account, container, false);
         logoutButton = view.findViewById(R.id.logoutButton);
-        editButton = view.findViewById(R.id.editButton);
         saveButton = view.findViewById(R.id.saveButton);
         editPhone = view.findViewById(R.id.editPhone);
         editName = view.findViewById(R.id.editName);
