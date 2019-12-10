@@ -45,6 +45,7 @@
             android:layout_marginStart="27dp"
             android:layout_marginTop="16dp"
             android:backgroundTint="#00AFFF"
+            android:onClick="saveData"
             android:text="Save"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/instruction2" />
