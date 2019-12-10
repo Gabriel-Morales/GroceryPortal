@@ -32,7 +32,6 @@ public class AccountFragment extends Fragment {
 
     private Button logoutButton, saveButton;
     private EditText editName, editEmail, editPassword, editPhone, editAddress, editCity, editZip, editDelivery;
-    private TextView name, email, password, phone, address, city, zipcode, delivery;
 
     private User user;
     private String emailAddress;
@@ -72,18 +71,27 @@ public class AccountFragment extends Fragment {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 user = documentSnapshot.toObject(User.class);
+
                 editName.setHint(user.getName());
                 editEmail.setHint(user.getEmail());
-                //TODO: figure out how to access password
+                editPassword.setHint("**********");
                 editPhone.setHint(user.getPhoneNumber());
-                editAddress.setHint(user.getBillingAddress());
-                editDelivery.setHint(user.getPreference());
 
-                editName.setVisibility(View.VISIBLE);
-                editEmail.setVisibility(View.VISIBLE);
-                editPhone.setVisibility(View.VISIBLE);
-                editAddress.setVisibility(View.VISIBLE);
-                editDelivery.setVisibility(View.VISIBLE);
+                String billingAddress = user.getBillingAddress();
+                String address[] = billingAddress.split(" ");
+                editAddress.setHint(address[0] + " " + address[1] + " " + address[2]);
+                if(address.length == 6)
+                {
+                    editCity.setHint(address[3] + " " + address[4]);
+                    editZip.setHint(address[5]);
+                }
+                else if(address.length == 7)
+                {
+                    editCity.setHint(address[3] + " " + address[4] + " " + address[5]);
+                    editZip.setHint(address[6]);
+                }
+
+                editDelivery.setHint(user.getPreference());
             }
         });
 
