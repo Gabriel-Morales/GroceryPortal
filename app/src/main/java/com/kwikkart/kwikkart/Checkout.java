@@ -268,7 +268,6 @@ public class Checkout extends AppCompatActivity {
                 Notification builder = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID).setSmallIcon(R.drawable.ic_notifications_black_24dp).setContentTitle("Kwik Kart Delivery").setContentText("Order placed on " + orderDate).setPriority(NotificationCompat.PRIORITY_HIGH).setDefaults(NotificationCompat.DEFAULT_SOUND).build();
                 NotificationManager notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
 
-
                 notificationManager.notify(192, builder);
 
 

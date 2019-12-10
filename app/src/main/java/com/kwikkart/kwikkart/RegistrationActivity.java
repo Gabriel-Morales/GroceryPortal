@@ -1,5 +1,6 @@
 package com.kwikkart.kwikkart;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -83,6 +84,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
         //This adds the metadata for new user into the user firestore collection
         fDatabase.collection("users").document(email).set(user.toMap());
+        startActivity(new Intent(RegistrationActivity.this, Home.class));
     }
 
 }
