@@ -1,7 +1,7 @@
 package com.kwikkart.kwikkart;
 
 
-import android.content.Intent;
+
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,10 +9,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.Switch;
-
-import com.google.firebase.auth.FirebaseAuth;
 
 
 /**
@@ -26,7 +23,15 @@ public class SettingsFragment extends Fragment  {
         // Required empty public constructor
     }
 
-
+    /**
+     * Sets all of the notifications on by default
+     * Turns all notifications off if turnOff switch is on
+     *
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return view
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -52,8 +57,4 @@ public class SettingsFragment extends Fragment  {
 
         return view;
     }
-
-    //TODO: Add methods to initialize ceratin components.
-
-
 }
