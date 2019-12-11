@@ -85,6 +85,10 @@ public class Checkout extends AppCompatActivity {
 
     private final String CHANNEL_ID = "Unique_Channel";
 
+    /**
+     * onCreate
+     * @param savedInstanceState vundle
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -268,7 +272,6 @@ public class Checkout extends AppCompatActivity {
                 Notification builder = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID).setSmallIcon(R.drawable.ic_notifications_black_24dp).setContentTitle("Kwik Kart Delivery").setContentText("Order placed on " + orderDate).setPriority(NotificationCompat.PRIORITY_HIGH).setDefaults(NotificationCompat.DEFAULT_SOUND).build();
                 NotificationManager notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
 
-
                 notificationManager.notify(192, builder);
 
 
@@ -282,6 +285,11 @@ public class Checkout extends AppCompatActivity {
 
     }
 
+    /**
+     * onOptionsItemSelected
+     * @param item menuItem
+     * @return boolean
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -293,6 +301,10 @@ public class Checkout extends AppCompatActivity {
         }
     }
 
+    /**
+     *  calculateTotal
+     * @return double
+     */
     private double calculateTotal()
     {
 
@@ -310,6 +322,10 @@ public class Checkout extends AppCompatActivity {
         return total;
     }
 
+    /**
+     * createNotificationChannel
+     * Creates Notification Channel
+     */
     private void createNotificationChannel() {
         // Create the NotificationChannel, but only on API 26+ because
         // the NotificationChannel class is new and not in the support library
@@ -326,6 +342,10 @@ public class Checkout extends AppCompatActivity {
         }
     }
 
+    /**
+     * orderIDgen
+     * @return String
+     */
     private String orderIDgen()
     {
         String str = "";

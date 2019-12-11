@@ -32,6 +32,13 @@ public class TrackFragment extends Fragment {
     private Toolbar toolbar;
     private ProgressBar trackProgress;
 
+    /**
+     * onCreateView
+     * @param inflater @NonNull LayoutInflater
+     * @param container ViewGroup
+     * @param savedInstanceState Bundle
+     * @return View
+     */
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view =  inflater.inflate(R.layout.fragment_track, container, false);
@@ -70,12 +77,18 @@ public class TrackFragment extends Fragment {
         return view;
     }
 
+    /**
+     * onStart
+     */
     @Override
     public void onStart() {
         super.onStart();
         mAdapter.startListening();
     }
 
+    /**
+     * onStop
+     */
     @Override
     public void onStop() {
         super.onStop();

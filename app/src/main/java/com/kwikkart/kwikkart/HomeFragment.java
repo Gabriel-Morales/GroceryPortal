@@ -45,12 +45,22 @@ public class HomeFragment extends Fragment {
     public static ArrayList<Item> allDatabaseItems;
     private static ArrayList<Item> itemsInCart  = new ArrayList<>();
 
+    /**
+     * HomeFragment
+     */
     public HomeFragment()
     {
         //Default constructor.
         this.queryString = "all_items";
     }
 
+    /**
+     * onCreateView
+     * @param inflater @NonNull LayoutInflater
+     * @param container ViewGroup
+     * @param savedInstanceState Bundle
+     * @return View
+     */
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
 
@@ -84,7 +94,9 @@ public class HomeFragment extends Fragment {
         return view;
     }
 
-
+    /**
+     * onStart
+     */
     @Override
     public void onStart() {
         super.onStart();
@@ -93,13 +105,18 @@ public class HomeFragment extends Fragment {
         mAdapter.startListening();
     }
 
+    /**
+     * onStop
+     */
     @Override
     public void onStop() {
         super.onStop();
         mAdapter.stopListening();
     }
 
-
+    /**
+     * initializePrimaryRecycler
+     */
     private void initializePrimaryRecycler()
     {
         mAdapter = initializeAdapter(queryString);
@@ -110,7 +127,11 @@ public class HomeFragment extends Fragment {
         recycleView.setLayoutManager(layoutManager);
     }
 
-
+    /**
+     * initializeAdapter
+     * @param queryString String
+     * @return FirebaseRecyclerAdapter<Item, ViewHolder>
+     */
     private FirebaseRecyclerAdapter<Item, ViewHolder> initializeAdapter(String queryString)
     {
 
@@ -150,6 +171,9 @@ public class HomeFragment extends Fragment {
 
     }
 
+    /**
+     * initializeTabs
+     */
     private void initializeTabs()
     {
 
@@ -205,6 +229,10 @@ public class HomeFragment extends Fragment {
 
     }
 
+    /**
+     * createFragment
+     * @param destFragment Fragment
+     */
     private void createFragment(Fragment destFragment)
     {
 
@@ -217,6 +245,10 @@ public class HomeFragment extends Fragment {
 
     }
 
+    /**
+     * addItemToCart
+     * @param item Item
+     */
     public static void addItemToCart(Item item)
     {
         //Provides a "deep" copy of the item. A less efficient version, but it's a small object.
@@ -224,11 +256,18 @@ public class HomeFragment extends Fragment {
         itemsInCart.add(copyItem);
     }
 
+    /**
+     * getCart
+     * @return ArrayList<Item>
+     */
     public static ArrayList<Item> getCart()
     {
         return itemsInCart;
     }
 
+    /**
+     * clearCart
+     */
     public static void clearCart()
     {
         if (itemsInCart == null)
@@ -240,6 +279,10 @@ public class HomeFragment extends Fragment {
         itemsInCart = new ArrayList<>();
     }
 
+    /**
+     * updateQuery
+     * @param queryString String
+     */
     public void updateQuery(String queryString)
     {
         this.queryString = queryString;

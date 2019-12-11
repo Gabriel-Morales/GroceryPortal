@@ -1,7 +1,7 @@
 package com.kwikkart.kwikkart;
 
 
-import android.content.Intent;
+
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,9 +9,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-
-import com.google.firebase.auth.FirebaseAuth;
+import android.widget.Switch;
 
 
 /**
@@ -19,20 +17,48 @@ import com.google.firebase.auth.FirebaseAuth;
  */
 public class SettingsFragment extends Fragment  {
 
+    private Switch turnOff, confirm, leaving, arrive;
+
+    /**
+     * SettingsFragment
+     */
     public SettingsFragment() {
         // Required empty public constructor
     }
 
-
+    /**
+     * onCreateView
+     * Sets all of the notifications on by default
+     * Turns all notifications off if turnOff switch is on
+     *
+     * @param inflater LayoutInflater
+     * @param container ViewGroup
+     * @param savedInstanceState Bundle
+     * @return View
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_settings, container, false);
 
+        turnOff = view.findViewById(R.id.turnOff);
+        confirm = view.findViewById(R.id.confirm);
+        leaving = view.findViewById(R.id.leaving);
+        arrive = view.findViewById(R.id.arrive);
+
+        confirm.setChecked(true);
+        leaving.setChecked(true);
+        arrive.setChecked(true);
+
+        turnOff.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                confirm.setChecked(false);
+                leaving.setChecked(false);
+                arrive.setChecked(false);
+            }
+        });
+
         return view;
     }
-
-    //TODO: Add methods to initialize ceratin components.
-
-
 }

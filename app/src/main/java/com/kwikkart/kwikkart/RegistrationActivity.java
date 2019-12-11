@@ -1,5 +1,6 @@
 package com.kwikkart.kwikkart;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -27,6 +28,10 @@ public class RegistrationActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseFirestore fDatabase;
 
+    /**
+     * onCreate
+     * @param savedInstanceState Bundle
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,12 +57,11 @@ public class RegistrationActivity extends AppCompatActivity {
 
 
     /**
+     * createNewUser
      * This method takes the registration form input to create a new user account
      * upon success, user is signed in automatically
      *
-     * @param view
-     *
-     * @return void
+     * @param view View
      */
     public void createNewUser(View view){
         String email = signupInputEmail.getText().toString();
@@ -83,6 +87,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
         //This adds the metadata for new user into the user firestore collection
         fDatabase.collection("users").document(email).set(user.toMap());
+        startActivity(new Intent(RegistrationActivity.this, Home.class));
     }
 
 }

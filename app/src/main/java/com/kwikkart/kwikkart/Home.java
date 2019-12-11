@@ -20,7 +20,10 @@ import androidx.navigation.ui.NavigationUI;
 
 public class Home extends AppCompatActivity  implements BottomNavigationView.OnNavigationItemSelectedListener {
 
-
+    /**
+     * onCreate
+     * @param savedInstanceState Bundle
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -38,6 +41,11 @@ public class Home extends AppCompatActivity  implements BottomNavigationView.OnN
 
     /* Note: Some of the below code has been adapted from Belal Khan - "Bottom navigation android example using fragments" */
 
+    /**
+     * onNavigationItemSelected
+     * @param menuItem @NonNull MenuItem
+     * @return boolean
+     */
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
@@ -70,7 +78,10 @@ public class Home extends AppCompatActivity  implements BottomNavigationView.OnN
         return false;
     }
 
-
+    /**
+     * createFragment
+     * @param fragment Fragment
+     */
     private void createFragment(Fragment fragment)
     {
 

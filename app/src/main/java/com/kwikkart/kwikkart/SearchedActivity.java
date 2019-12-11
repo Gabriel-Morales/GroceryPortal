@@ -27,6 +27,10 @@ public class SearchedActivity extends AppCompatActivity {
     private String searchQuery;
     private ArrayList<Item> allDatabaseItems;
 
+    /**
+     * onCreate
+     * @param savedInstanceState Bundle
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,12 +59,20 @@ public class SearchedActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * onStart
+     */
     @Override
     protected void onStart() {
         super.onStart();
 
     }
 
+    /**
+     * onOptionsItemSelected
+     * @param item MenuItem
+     * @return boolean
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -72,6 +84,9 @@ public class SearchedActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * initializeRecyler
+     */
     private void initializeRecyler()
     {
         SearchItemAdapter adapter = new SearchItemAdapter(allDatabaseItems.size(), allDatabaseItems);
@@ -82,6 +97,9 @@ public class SearchedActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * pruneResults
+     */
     private void pruneResults()
     {
 
@@ -98,6 +116,12 @@ public class SearchedActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * hasItemName
+     * @param temp ArrayList<Item>
+     * @param name String
+     * @return boolean
+     */
     //Remove duplicates by searching to see if the string is in the list already. Returns true if in string.
     private boolean hasItemName(ArrayList<Item> temp, String name)
     {
