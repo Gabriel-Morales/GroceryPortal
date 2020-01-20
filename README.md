@@ -13,7 +13,7 @@ Features include:
   
 As this is a project which simulates a real-world application, only the necessary requirements were met and most of the features are meant to replicate what would be the functionality. Some limitations of the database caused certain work-arounds to be executed.
 
-# Screenshots
+# Screenshots #
 
 <img src="Screenshots/account.JPG></img>
 <img src="Screenshots/cart_clear.JPG"></img>
