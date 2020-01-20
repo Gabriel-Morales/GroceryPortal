@@ -15,7 +15,7 @@ As this is a project which simulates a real-world application, only the necessar
 
 # Screenshots #
 
-<img src="Screenshots/account.JPG></img>
+<img src="Screenshots/account.JPG"></img>
 <img src="Screenshots/cart_clear.JPG"></img>
 <img src="Screenshots/checkout_load.JPG"></img>
 <img src="Screenshots/checkout.JPG"></img>
