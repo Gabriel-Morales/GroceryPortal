@@ -182,8 +182,7 @@
                 android:hint="Expiration Date"
                 android:inputType="date"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.908"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cvv"
                 app:layout_constraintTop_toBottomOf="@+id/cardNum" />
 
             <TextView
@@ -202,15 +201,16 @@
 
             <EditText
                 android:id="@+id/holderName"
-                android:layout_width="378dp"
+                android:layout_width="380dp"
                 android:layout_height="46dp"
-                android:layout_marginTop="21dp"
+                android:layout_marginTop="19dp"
                 android:ems="10"
                 android:hint="Cardholder Name"
                 android:inputType="textPersonName"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cvv"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/expire" />
+                app:layout_constraintTop_toBottomOf="@+id/cvv" />
 
             <TextView
                 android:id="@+id/emailText"
