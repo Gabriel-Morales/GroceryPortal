@@ -15,21 +15,21 @@ As this is a project which simulates a real-world application, only the necessar
 
 # Screenshots #
 
-<img src="Screenshots/account.JPG"></img>
-<img src="Screenshots/cart_clear.JPG"></img>
-<img src="Screenshots/checkout_load.JPG"></img>
-<img src="Screenshots/checkout.JPG"></img>
-<img src="Screenshots/checkout_scroll.JPG"></img>
-<img src="Screenshots/clear_confirm.JPG"></img>
-<img src="Screenshots/log_in.JPG"></img>
-<img src="Screenshots/main_inventory.JPG"></img>
-<img src="Screenshots/main_page.JPG"></img>
-<img src="Screenshots/order_notif.JPG"></img>
-<img src="Screenshots/scroll.JPG"></img>
-<img src="Screenshots/search_main.JPG"></img>
-<img src="Screenshots/searched.JPG"></img>
-<img src="Screenshots/settings.JPG"></img>
-<img src="Screenshots/sign_up.JPG"></img>
-<img src="Screenshots/tab_nav.JPG"></img>
-<img src="Screenshots/track_load.JPG"></img>
-<img src="Screenshots/track.JPG"></img>
+<img src="Screenshots/account.JPG" width="300" height="629"></img>
+<img src="Screenshots/cart_clear.JPG" width="300" height="629"></img>
+<img src="Screenshots/checkout_load.JPG" width="300" height="629"></img>
+<img src="Screenshots/checkout.JPG" width="300" height="629"></img>
+<img src="Screenshots/checkout_scroll.JPG" width="300" height="629"></img>
+<img src="Screenshots/clear_confirm.JPG" width="300" height="629"></img>
+<img src="Screenshots/log_in.JPG" width="300" height="629"></img>
+<img src="Screenshots/main_inventory.JPG" width="300" height="629"></img>
+<img src="Screenshots/main_page.JPG" width="300" height="629"></img>
+<img src="Screenshots/order_notif.JPG" width="300" height="629"></img>
+<img src="Screenshots/scroll.JPG" width="300" height="629"></img>
+<img src="Screenshots/search_main.JPG" width="300" height="629"></img>
+<img src="Screenshots/searched.JPG" width="300" height="629"></img>
+<img src="Screenshots/settings.JPG" width="300" height="629"></img>
+<img src="Screenshots/sign_up.JPG" width="300" height="629"></img>
+<img src="Screenshots/tab_nav.JPG" width="300" height="629"></img>
+<img src="Screenshots/track_load.JPG" width="300" height="629"></img>
+<img src="Screenshots/track.JPG" width="300" height="629"></img>
