@@ -17,27 +17,49 @@
         android:layout_height="wrap_content"
         tools:context=".AccountFragment" >
 
-        <Button
-            android:id="@+id/editButton"
+        <TextView
+            android:id="@+id/instruction"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="22dp"
-            android:layout_marginTop="18dp"
-            android:backgroundTint="#00AFFF"
-            android:text="Edit"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:text="To edit your account information, simply type "
+            android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/instruction2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="39dp"
+            android:text="in the field you wish to edit and click save"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/instruction" />
+
+        <Button
+            android:id="@+id/saveButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="27dp"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#00AFFF"
+            android:onClick="saveData"
+            android:text="Save"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/instruction2" />
 
         <Button
             android:id="@+id/logoutButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
-            android:layout_marginEnd="28dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="27dp"
             android:backgroundTint="#00AFFF"
             android:text="@string/logout"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/instruction2" />
 
         <TextView
             android:id="@+id/name"
@@ -47,7 +69,7 @@
             android:layout_marginTop="16dp"
             android:text="First and Last Name"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editButton"
+            app:layout_constraintTop_toBottomOf="@+id/saveButton"
             tools:ignore="MissingConstraints" />
 
         <EditText
@@ -75,7 +97,6 @@
             android:layout_width="360dp"
             android:layout_height="50dp"
             android:layout_marginStart="27dp"
-            android:layout_marginTop="3dp"
             android:ems="10"
             android:inputType="textEmailAddress"
             app:layout_constraintStart_toStartOf="parent"
@@ -86,7 +107,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="27dp"
-            android:layout_marginTop="22dp"
+            android:layout_marginTop="24dp"
             android:text="@string/password"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editEmail" />
@@ -96,7 +117,6 @@
             android:layout_width="360dp"
             android:layout_height="50dp"
             android:layout_marginStart="28dp"
-            android:layout_marginTop="1dp"
             android:ems="10"
             android:inputType="textPassword"
             app:layout_constraintStart_toStartOf="parent"
@@ -106,8 +126,8 @@
             android:id="@+id/phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginStart="27dp"
+            android:layout_marginTop="24dp"
             android:text="Phone Number"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editPassword" />
@@ -116,7 +136,7 @@
             android:id="@+id/editPhone"
             android:layout_width="360dp"
             android:layout_height="50dp"
-            android:layout_marginStart="28dp"
+            android:layout_marginStart="27dp"
             android:ems="10"
             android:inputType="phone"
             app:layout_constraintStart_toStartOf="parent"
@@ -126,7 +146,7 @@
             android:id="@+id/address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
+            android:layout_marginStart="27dp"
             android:layout_marginTop="24dp"
             android:text="Street Address"
             app:layout_constraintStart_toStartOf="parent"
@@ -137,7 +157,6 @@
             android:layout_width="360dp"
             android:layout_height="50dp"
             android:layout_marginStart="27dp"
-            android:layout_marginTop="1dp"
             android:ems="10"
             android:inputType="textPersonName"
             app:layout_constraintStart_toStartOf="parent"
@@ -147,8 +166,8 @@
             android:id="@+id/city"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="18dp"
+            android:layout_marginStart="27dp"
+            android:layout_marginTop="24dp"
             android:text="City"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editAddress" />
@@ -157,7 +176,7 @@
             android:id="@+id/editCity"
             android:layout_width="160dp"
             android:layout_height="50dp"
-            android:layout_marginStart="28dp"
+            android:layout_marginStart="27dp"
             android:ems="10"
             android:inputType="textPersonName"
             app:layout_constraintStart_toStartOf="parent"
@@ -167,7 +186,7 @@
             android:id="@+id/zipcode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             android:layout_marginEnd="128dp"
             android:text="Zip Code"
             app:layout_constraintEnd_toEndOf="parent"
@@ -177,7 +196,6 @@
             android:id="@+id/editZip"
             android:layout_width="160dp"
             android:layout_height="50dp"
-            android:layout_marginTop="1dp"
             android:layout_marginEnd="24dp"
             android:ems="10"
             android:inputType="number"
@@ -188,8 +206,8 @@
             android:id="@+id/delivery"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="27dp"
+            android:layout_marginTop="24dp"
             android:text="Delivery Preference"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editCity" />
@@ -198,23 +216,12 @@
             android:id="@+id/editDelivery"
             android:layout_width="360dp"
             android:layout_height="150dp"
-            android:layout_marginStart="28dp"
+            android:layout_marginStart="27dp"
             android:ems="10"
             android:gravity="start|top"
             android:inputType="textMultiLine"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/delivery" />
-
-        <Button
-            android:id="@+id/saveButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="160dp"
-            android:layout_marginTop="20dp"
-            android:backgroundTint="#00AFFF"
-            android:text="Save"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editDelivery" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

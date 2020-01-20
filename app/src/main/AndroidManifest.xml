@@ -10,6 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".SearchedActivity" />
+        <activity android:name=".Checkout"/>
         <activity
             android:name=".RegistrationActivity"
             android:theme="@style/AppTheme.NoActionBar" />

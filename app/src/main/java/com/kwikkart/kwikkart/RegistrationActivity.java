@@ -1,9 +1,11 @@
 package com.kwikkart.kwikkart;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -27,6 +29,10 @@ public class RegistrationActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseFirestore fDatabase;
 
+    /**
+     * onCreate
+     * @param savedInstanceState Bundle
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,15 +58,14 @@ public class RegistrationActivity extends AppCompatActivity {
 
 
     /**
+     * createNewUser
      * This method takes the registration form input to create a new user account
      * upon success, user is signed in automatically
      *
-     * @param view
-     *
-     * @return void
+     * @param view View
      */
     public void createNewUser(View view){
-        String email = signupInputEmail.getText().toString();
+        final String email = signupInputEmail.getText().toString();
         String password = signupInputPassword.getText().toString();
         String name = signupInputName.getText().toString();
         String phoneNumber = signupInputPhoneNumber.getText().toString();
@@ -68,21 +73,26 @@ public class RegistrationActivity extends AppCompatActivity {
         String street = signupInputStreet.getText().toString();
         String zipcode = signupInputZipCode.getText().toString();
         String preference = signupInputPreferences.getText().toString();
-        User user = new User(email, name, street + " " + city + " " + zipcode, phoneNumber, preference);
+        final User user = new User(email, name, street + " " + city + " " + zipcode, phoneNumber, preference);
 
         //This adds user the the authentication database
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
-                    Log.d(TAG, "createUserWithEmail:success");
+                    //This adds the metadata for new user into the user firestore collection
+                    fDatabase.collection("users").document(email).set(user.toMap()).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.d("TEST", "Failure: " + e.toString());
+                        }
+                    });
+                    startActivity(new Intent(RegistrationActivity.this, Home.class));
                 }
             }
         });
 
 
-        //This adds the metadata for new user into the user firestore collection
-        fDatabase.collection("users").document(email).set(user.toMap());
     }
 
 }

@@ -17,6 +17,10 @@ public class MainActivity extends AppCompatActivity {
     private View loginView;
     private FirebaseAuth mAuth;
 
+    /**
+     * onCreate
+     * @param savedInstanceState savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,12 +39,20 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * loginButtonClicked
+     * @param view View
+     */
     public void loginButtonClicked(View view) {
 
         Intent intent = new Intent(this, SignInActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * registerButtonClicked
+     * @param view View
+     */
     public void registerButtonClicked(View view){
 
         Intent intent = new Intent(this, RegistrationActivity.class);

@@ -36,6 +36,13 @@ public class CartFragment extends Fragment {
     private RecyclerView recyclerView;
     public static CartAdapter notifCartAdapter;
 
+    /**
+     * onCreateView
+     * @param inflater @NonNull LayoutInflater
+     * @param container ViewGroup
+     * @param savedInstanceState Bundle
+     * @return View
+     */
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         view = inflater.inflate(R.layout.fragment_cart, container, false);
@@ -103,6 +110,9 @@ public class CartFragment extends Fragment {
          return view;
     }
 
+    /**
+     * onResume
+     */
     @Override
     public void onResume() {
         super.onResume();

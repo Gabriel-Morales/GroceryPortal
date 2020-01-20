@@ -23,6 +23,10 @@ public class SignInActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private Intent intent;
 
+    /**
+     * onCreate
+     * @param savedInstanceState Bundle
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +48,10 @@ public class SignInActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * validateUser
+     * @param view View
+     */
     public void validateUser(View view)
     {
 
@@ -77,6 +85,11 @@ public class SignInActivity extends AppCompatActivity {
         });
 
     }
+
+    /**
+     * forgetPassword
+     * @param view View
+     */
     //No need to implement this to the tiniest detail. It just notifies that an email has been sent.
     public void forgetPassword(View view)
     {
